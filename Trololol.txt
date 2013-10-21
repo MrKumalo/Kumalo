@@ -1,8 +1,12 @@
 MÃ¡na Gul Ã gegnum GreenQloud serverinn!
 Mána gull er orðinn reiður!
+<<<<<<< HEAD
 
 ÞÐÆÖ
 
+=======
+uetohastuheoahs
+>>>>>>> 1bf865974c3552664477977a186f956966a006d7
 Thad notar enginn islenska stafi!!! Madur a aldrei ad nota neitt annad en ascii!!
 hvenrig væri að nota íslenska stafi? moðhaus!
 
