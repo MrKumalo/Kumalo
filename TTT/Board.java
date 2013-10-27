@@ -9,9 +9,9 @@ public class Board
 
     public boolean setCell(int cellID, char XO)
     {
-        if(board[cellID] != ' ')
+        if(board[cellID] != ' ' && cellID > 0 && cellID < 10 && (XO == 'X'  || XO == 'O'))
         {
-            board[cellID] = XO;
+            board[cellID-1] = XO;
             return true;
         }
         return false;
@@ -19,9 +19,9 @@ public class Board
 
     public void reset()
     {
-        for(int i=0; i < 10; i++)
+        for(int i=0; i < 9; i++)
         {
-            board[i] =  ' ';
+            board[i] =  Character.forDigit(i+1, 10);
         }
     }
 
@@ -29,10 +29,11 @@ public class Board
     public String toString()
     {
         String out = "";
-        for(int i=0; i < 10; i++)
+        for(int i=0; i < 9; i++)
         {
             out += board[i];
-            if(i % 3 == 0)
+            out += ' ';
+            if(i == 2 || i == 5 )
             {
                 out += "\n";
             }
