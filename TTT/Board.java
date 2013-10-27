@@ -9,13 +9,34 @@ public class Board
 
     public boolean setCell(int cellID, char XO)
     {
-        if(board[cellID] != ' ' && cellID > 0 && cellID < 10 && (XO == 'X'  || XO == 'O'))
+        if(isCellEmpty(cellID) && cellID > 0 && cellID < 10 && (XO == 'X'  || XO == 'O' || XO == 'x'  || XO == 'o'))
         {
-            board[cellID-1] = XO;
-            return true;
+            if(XO == 'X'  || XO == 'x' )
+            {
+                board[cellID-1] = 'X';
+                return true;
+            }
+            else if(XO == 'O' || XO == 'o' )
+            {
+                board[cellID-1] = 'O';
+                return true;
+            }
         }
         return false;
     }
+
+    public boolean isCellEmpty(int cellID)
+    {
+        if(board[cellID-1] == Character.forDigit(cellID, 10))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
     public void reset()
     {
