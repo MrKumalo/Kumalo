@@ -14,5 +14,6 @@ public class TTT
 			System.out.println(e.getMessage());
 			System.exit(1);
 		}
+		Board game = new Board();
 	}	
 }
