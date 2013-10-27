@@ -19,3 +19,5 @@ Computer: 5
 
 Your turn
 Hit: 2
+
+
