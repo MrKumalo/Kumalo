@@ -2,6 +2,17 @@ public class TTT
 {
 	public static void main(String[] args) 
 	{
-		System.out.println("FooBar");		
+		Player arnar = null;
+		Player solberg = null;
+		try
+		{
+			arnar = new Player('x', "Arnar");
+			solberg = new Player('o', "Solberg");
+		}
+		catch(XOException e)
+		{
+			System.out.println(e.getMessage());
+			System.exit(1);
+		}
 	}	
 }
