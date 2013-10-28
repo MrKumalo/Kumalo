@@ -1,3 +1,5 @@
+package is.ru.hbfraedi.TTT;
+
 public class Player 
 {
 	char x_o;
