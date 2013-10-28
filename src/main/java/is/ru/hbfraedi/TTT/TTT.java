@@ -1,4 +1,5 @@
 package is.ru.hbfraedi.TTT;
+import is.ru.hbfraedi.TTT.Exception.XOException;
 
 public class TTT 
 {
