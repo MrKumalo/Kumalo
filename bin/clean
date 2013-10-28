@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "not implemented"
+mvn clean

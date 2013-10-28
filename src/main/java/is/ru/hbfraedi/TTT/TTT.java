@@ -1,3 +1,5 @@
+package is.ru.hbfraedi.TTT;
+
 public class TTT 
 {
 	public static void main(String[] args) 

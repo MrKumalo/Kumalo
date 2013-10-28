@@ -1,3 +1,5 @@
+package is.ru.hbfraedi.TTT;
+
 public class Board
 {
     private char[] board = new char[9];
