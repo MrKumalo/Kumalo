@@ -25,6 +25,11 @@ public class Board
         return false;
     }
 
+    public char[] getBoard()
+    {
+        return board;
+    }
+
     public boolean isCellEmpty(int cellID)
     {
         if(board[cellID-1] == Character.forDigit(cellID, 10))
