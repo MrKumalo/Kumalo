@@ -5,15 +5,19 @@ import spark.*;
 
 public class Table{
 
-	public static final char empty = "E";
+	public static final char empty = 'E';
 	public static final int Rows = 9;
-	public static char[] table = new char[Rows];
+	private char[] table = new char[Rows];
 
-	public char InitializeTable(){
-
-		for(int i = 0; i < Rows; i++){
-			table[i] = empty;
+	public Table()
+	{
+		for(int i = 0; i < Rows; i++)
+		{
+			this.table[i] = empty;
 		}
-		return table;
+	}
+	public char[] getTable()
+	{
+		return this.table;
 	}
 }
