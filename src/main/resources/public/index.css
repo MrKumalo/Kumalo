@@ -9,3 +9,6 @@
     background-color: #ffffff;
     font-size: 0px;
 }
+#board td p {
+	font-size: 50px;
+}

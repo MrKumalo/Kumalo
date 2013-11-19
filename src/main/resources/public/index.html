@@ -5,6 +5,9 @@
     <title>Tic Tac Toe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="ttt.js" type="javascript"></script>
+    
     <!-- load bootstrap for nicer ui -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
@@ -15,19 +18,19 @@
       <h2>Tic Tac Toe</h2>
       <table id="board" class="table">
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td id="1"></td>
+          <td id="2"></td>
+          <td id="3"></td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td id="4"></td>
+          <td id="5"></td>
+          <td id="6"></td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td id="7"></td>
+          <td id="8"></td>
+          <td id="9"></td>
         </tr>
       </table>
       <div id="results">
@@ -35,27 +38,7 @@
     </div>
 
     <!-- load jquery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- use ajax to submit form, retreive the result and display on the page -->
-    <script>
-    $(document).ready(function() {
-      var form = $('form');
-      form.submit(function(e) {
-        var a = $("#a").val();
-        var b = $("#b").val();
-        $.ajax({
-          type: form.attr('method'),
-          url: form.attr('action'),
-          data: 'a=' + a + '&b=' + b
-        }).done(function(sum) {
-          $('#results').html(a + ' + ' + b + ' = ' + sum).attr('class', 'alert alert-success');
-        }).fail(function() {
-          $('#results').html('Error ! Please try again later :)').attr('class', 'alert alert-danger');
-        });
-        e.preventDefault();
-      });
-    });
-    </script>
   </body>
 </html>
