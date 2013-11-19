@@ -1,6 +1,6 @@
 Verkefnalisti:
 
-Gunnar: Fá git til að virka, og laga build scriptur fyrir allt
+Gunnar: laga build scriptur fyrir allt
 Arnar: Gera spark
 Axel/Sólberg:Kóða 
 Halli: Fá git til að virka og byrja að skrifa kóða með arnari
