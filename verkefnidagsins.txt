@@ -1,7 +1,7 @@
 Verkefnalisti:
 
 Gunnar: Fá git til að virka, og laga build scriptur fyrir allt
-Arnar: Byrja að skrifa unit_test og kóða fyrir leikmann
-Axel/Sólberg: Koma spark í gang, koma upp spark í okkar forriti, helst fá borð til að birtast
+Arnar: Gera spark
+Axel/Sólberg:Kóða 
 Halli: Fá git til að virka og byrja að skrifa kóða með arnari
 Gadi: Chilla
