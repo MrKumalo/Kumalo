@@ -19,5 +19,10 @@ public class Player{
 	{
 		return myTurn;
 	}
+	public void turn()
+	{
+		myTurn = !myTurn;
+	}
+
 	
 }
