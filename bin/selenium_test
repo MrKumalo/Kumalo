@@ -1,5 +1,5 @@
 #!\bin\bash
 
-export STAGING_SERVER=${STAGING_SERVER:='http://localhost:5000'}
+export STAGING_SERVER=${STAGING_SERVER:='http://localhost:4444'}
 
 mvn test-compile failsafe:integration-test failsafe:verify
