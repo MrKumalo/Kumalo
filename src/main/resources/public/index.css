@@ -1,0 +1,16 @@
+#board {
+	border: 1px solid black;
+	border-collapse: separate;
+}
+#board td {
+    border: solid 1px;
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff;
+    font-size: 0px;
+}
+#board td p {
+	font-size: 50px;
+	margin-right: auto;
+	margin-left: auto;
+}

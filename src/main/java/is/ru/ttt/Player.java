@@ -1,6 +1,7 @@
 package is.ru.ttt;
 
-public class Player{
+public class Player
+{
 
 	private String player;
 	private Boolean myTurn;
@@ -12,12 +13,12 @@ public class Player{
 	}
 	public String getPlayer()
 	{
-		return player;
+		return this.player;
 	}
 	
 	public Boolean getTurn()
 	{
-		return myTurn;
+		return this.myTurn;
 	}
 	public void turn()
 	{
