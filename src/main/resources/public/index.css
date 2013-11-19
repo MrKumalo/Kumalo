@@ -11,4 +11,6 @@
 }
 #board td p {
 	font-size: 50px;
+	margin-right: auto;
+	margin-left: auto;
 }
