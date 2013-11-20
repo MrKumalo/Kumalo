@@ -1,10 +1,9 @@
-package is.ru.hbfraedi.TTT;
-import is.ru.hbfraedi.TTT.Exception.XOException;
+package is.ru.ttt;
 
 import static spark.Spark.*;
 import spark.*;
 
-public class HelloWorld {
+public class TicTacToe {
     public static void main(String[] args) {
         staticFileLocation("/public");
         
@@ -27,3 +26,4 @@ public class HelloWorld {
         });
     }
 }
+
