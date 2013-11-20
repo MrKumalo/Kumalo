@@ -18,9 +18,9 @@ public class TicTacToe
                 
                 Player player1 = new Player(p1, true);
                 Player player2 = new Player(p2, false);
-
-                String json = "[{\"Player1\":\"" + p1 + "\"},{\"Player2\":\"" + p2 + "\"}]";
-                return json;
+                
+                
+                return ;
            }
         });
 
