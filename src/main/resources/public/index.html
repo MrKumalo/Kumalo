@@ -41,15 +41,15 @@
     </div>
 
     <div id="lobby">
-      <form method="post" action="/players" class="form-inline" role="form">
+        
         <div class="form-group">
-          <input type="text" class="form-control" name="player1" id="player1" placeholder="Player 1">
+          <input type="text" class="form-control" name="player1" id="player1" value="Arnar" placeholder="Player 1">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="player2" id="player2" placeholder="Player 2">
+          <input type="text" class="form-control" name="player2" id="player2" value="Sóli" placeholder="Player 2">
         </div>
-        <button type="submit" class="btn btn-default">Play game</button>
-      </form>
+        <button type="submit" onclick="javascript:return addPlayers()" class="btn btn-default">Play game</button>
+     
     </div>
 
     <!-- load jquery -->
@@ -115,7 +115,7 @@
         }
     });
   }
-
+/*
   form.submit(function(e) {
         var a = $("#player1").val();
         var b = $("#player2").val();
@@ -130,5 +130,24 @@
         });
         e.preventDefault();
       });
+*/
+
+function addPlayers() {
+    var player1 = $("#player1").val();
+    var player2 = $("#player2").val();
+
+    console.log(player1 + ":" + player2);
+    $.ajax({
+        type: "POST",
+        url: "/players",
+        data: 'player1=' + player1 + '&player2=' + player2
+      }).done(function(sum) {
+          console.log(sum);
+      }).fail(function() {
+          console.log("foo");
+      });    
+    return false;
+}
+
   </script>
 </html>
