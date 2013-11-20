@@ -16,8 +16,8 @@
 
     <div class="container">
     <div id="playernames">
-      <h4 id="p1"></h4>
-      <h4 id="p2"></h4>
+      <h4 id="player1"></h4>
+      <h4 id="player2"></h4>
     </div>
       <h2>Tic Tac Toe</h2>
       <table id="board" class="table">
@@ -41,7 +41,6 @@
     </div>
 
     <div id="lobby">
-        
         <div class="form-group">
           <input type="text" class="form-control" name="player1" id="player1" value="Arnar" placeholder="Player 1">
         </div>
@@ -49,7 +48,6 @@
           <input type="text" class="form-control" name="player2" id="player2" value="Sóli" placeholder="Player 2">
         </div>
         <button type="submit" onclick="javascript:return addPlayers()" class="btn btn-default">Play game</button>
-     
     </div>
 
     <!-- load jquery -->
@@ -75,7 +73,6 @@
   });
 
  
-
   function getboard() {
     $.ajax({
         type: "GET",
@@ -84,7 +81,7 @@
         success:function(data){
             for(var i=0; i< data.length; i++)
             {
-              if(data[i]["cell" + i] == "E")
+              if(data[i]["cell" + i] != "E")
               {
                 $('#cell' + i).html('<p>' + data[i]["cell" + i] + '</p>');
               } 
@@ -122,8 +119,7 @@ function addPlayers() {
         type: "POST",
         url: "/players",
         data: 'player1=' + player1 + '&player2=' + player2
-      }).done(function(sum) {
-          console.log(sum);
+      }).done(function(data) {
           
           $('#lobby').hide();
           $('.container').show();
@@ -132,6 +128,7 @@ function addPlayers() {
           {
             $('#player' + (i + 1)).append(data[i]["player" + i]);
           }
+
           getboard();
 
       }).fail(function() {
