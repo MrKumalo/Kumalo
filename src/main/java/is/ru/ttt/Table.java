@@ -33,7 +33,7 @@ public class Table{
 
 	public String toJson()
     {
-    	String result = "[";
+    	String result = "";
     	for(int i = 0; i < Rows; i++)
 		{
 			result += "{\"cell" + i + "\":\"" + this.table[i] + "\"}";
@@ -42,7 +42,6 @@ public class Table{
 				result += ",";	
 			}
 		}
-		result += "]";
 		return result;
     }
 }

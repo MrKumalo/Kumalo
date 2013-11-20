@@ -50,4 +50,10 @@ public class Player
 	{
 		return inserted;
 	}
+
+	public String toJson()
+	{
+		String json = "{\"Player1\":\"" + player + "\"}";
+		return json;
+	}
 }

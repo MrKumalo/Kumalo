@@ -41,7 +41,6 @@
     </div>
 
     <div id="lobby">
-        
         <div class="form-group">
           <input type="text" class="form-control" name="player1" id="player1" value="Arnar" placeholder="Player 1">
         </div>
@@ -49,7 +48,6 @@
           <input type="text" class="form-control" name="player2" id="player2" value="Sóli" placeholder="Player 2">
         </div>
         <button type="submit" onclick="javascript:return addPlayers()" class="btn btn-default">Play game</button>
-     
     </div>
 
     <!-- load jquery -->
@@ -69,32 +67,12 @@
         $(this).addClass('used');
         $(this).append('<p>X</p>');
       }
-      getboard();
+
       console.log(id);
     });
   });
 
-  function getPlayerNames() {
-    $.ajax({
-        type: "GET",
-        url: "/",
-        dataType:"json",
-        success:function(data){
-          $('#lobby').hide();
-          $('#container').show();
-          for(var i = 0; i < data.length; i++)
-          {
-            $('#player' + (i + 1)).append(data[i]["player" + i]);
-          }
-          getboard();
-        },
-        error: function (xhr, err) {
-        console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
-        console.log("responseText: " + xhr.responseText);
-        }
-    });
-  }
-
+ /*
   function getboard() {
     $.ajax({
         type: "GET",
@@ -103,7 +81,7 @@
         success:function(data){
             for(var i=0; i< data.length; i++)
             {
-              if(data[i]["cell" + i] == "E")
+              if(data[i]["cell" + i] != "E")
               {
                 $('#cell' + i).html('<p>' + data[i]["cell" + i] + '</p>');
               } 
@@ -115,6 +93,7 @@
         }
     });
   }
+  */
 /*
   form.submit(function(e) {
         var a = $("#player1").val();
@@ -141,11 +120,15 @@ function addPlayers() {
         type: "POST",
         url: "/players",
         data: 'player1=' + player1 + '&player2=' + player2
-      }).done(function(sum) {
-          console.log(sum);
-
-          $('.container').show();
+      }).done(function(data) {
+          
           $('#lobby').hide();
+          $('.container').show();
+          
+          for(var i = 0; i < data.length; i++)
+          {
+            $('#p' + (i + 1)).append(data[i]["p" + i]);
+          }
 
 
       }).fail(function() {

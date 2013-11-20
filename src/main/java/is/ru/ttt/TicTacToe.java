@@ -19,8 +19,20 @@ public class TicTacToe
                 Player player1 = new Player(p1, true);
                 Player player2 = new Player(p2, false);
 
-                String json = "[{\"Player1\":\"" + p1 + "\"},{\"Player2\":\"" + p2 + "\"}]";
-                return json;
+                Table table = new Table();
+
+                Game game;
+
+                try
+                {
+                    game = new Game(player1, player2, table, 1);
+                }
+                catch(IllegalTurnException ex)
+                {
+                    return "[{\"Status\":\"error\"}]";
+                }
+                System.out.println(game.toJson());
+                return game.toJson();
            }
         });
 
