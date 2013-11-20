@@ -9,4 +9,4 @@ git add b
 git add .gitignore
 
 git commit -m "$1"
-git push -u origin $2
+git push -u $2 master
