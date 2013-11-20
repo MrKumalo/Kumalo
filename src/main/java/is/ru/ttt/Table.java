@@ -16,8 +16,18 @@ public class Table{
 			this.table[i] = empty;
 		}
 	}
-	public char[] getTable()
+	public char getTable(int i)
+	{
+		return this.table[i];
+	}
+
+	public char[] getFullTable()
 	{
 		return this.table;
+	}
+
+	public void setX(char input, int location)
+	{
+		this.table[location] = input;
 	}
 }
