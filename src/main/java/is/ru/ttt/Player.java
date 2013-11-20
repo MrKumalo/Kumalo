@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Player
 {
+
 	private int turnCount;
 	private String player;
 	private Boolean myTurn;
@@ -26,14 +27,19 @@ public class Player
 	{
 		myTurn = !myTurn;
 	}
-	public void insertIntoTable(int cell)
+	public void insertIntoTable(int cell) throws OutOfBoundsException
 	{
 		if(cell >= 0 && cell < 9)
 		{
-			if(!inserted.contains(cell))
-			{
-				inserted.add(cell);
-			}
+				if(!inserted.contains(cell))
+				{
+					inserted.add(cell);
+				}
+
+		}
+		else
+		{
+			throw new OutOfBoundsException("Input out of bounds");
 		}
 	}
 	public ArrayList<Integer> getInserted()
