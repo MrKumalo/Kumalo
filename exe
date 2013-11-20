@@ -1,0 +1,8 @@
+#!/bin/bash
+
+chmod +x bin/*
+chmod +x a
+chmod +x b
+chmod +x exe
+chmod +x soli
+

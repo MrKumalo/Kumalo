@@ -27,23 +27,35 @@ public class Player
 	{
 		myTurn = !myTurn;
 	}
-	public void insertIntoTable(int cell) throws OutOfBoundsException, AlreadyOccupiedException
+<<<<<<< HEAD
+	public void insertIntoTable(int cell) throws OutOfBoundCellException
+=======
+	public void insertIntoTable(int cell) throws OutOfBoundsException
+>>>>>>> b9e1dedac7c04afff4af7ddfacac09baf2a4b64b
 	{
-		if(cell >= 0 && cell < 9)
+		if(cell < 0 || cell > 8)
 		{
+			throw new OutOfBoundCellException("Cell out of bounds");
+		}
+		else
+		{
+<<<<<<< HEAD
+			if(!inserted.contains(cell))
+			{
+				inserted.add(cell);
+			}
+			
+=======
 				if(!inserted.contains(cell))
 				{
 					inserted.add(cell);
-				}
-				else
-				{
-					throw new AlreadyOccupiedException("Cell is already occupied");
 				}
 
 		}
 		else
 		{
 			throw new OutOfBoundsException("Input out of bounds");
+>>>>>>> b9e1dedac7c04afff4af7ddfacac09baf2a4b64b
 		}
 	}
 	public ArrayList<Integer> getInserted()

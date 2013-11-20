@@ -30,4 +30,19 @@ public class Table{
 	{
 		this.table[location] = input;
 	}
+
+	public String toJson()
+    {
+    	String result = "[";
+    	for(int i = 0; i < Rows; i++)
+		{
+			result += "{\"cell" + i + "\":\"" + this.table[i] + "\"}";
+			if(i < 8)
+			{
+				result += ",";	
+			}
+		}
+		result += "]";
+		return result;
+    }
 }
