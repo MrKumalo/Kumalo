@@ -13,10 +13,13 @@ public class TicTacToe
         post(new Route("/players") {
             @Override
             public Object handle(Request request, Response response) {
-                String player1 = request.queryParams("player1");
-                String player2 = request.queryParams("player2");
-                String json = "[{\"Player1\":\"" + player1 + "\"},{\"Player2\":\""
-                + player2 + "\"}]";
+                String p1 = request.queryParams("player1");
+                String p2 = request.queryParams("player2");
+                
+                Player player1 = new Player(p1, true);
+                Player player2 = new Player(p2, false);
+
+                String json = "[{\"Player1\":\"" + p1 + "\"},{\"Player2\":\"" + p2 + "\"}]";
                 return json;
            }
         });
