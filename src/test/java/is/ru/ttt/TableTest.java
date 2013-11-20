@@ -9,7 +9,8 @@ import org.junit.Test;
 public class TableTest {
 
     @Test
-    public void EmptyTable() {
+    public void EmptyTable() 
+    {
     	Table t = new Table();
        	for(int i = 0; i < 9; i++)
        	{
@@ -18,7 +19,8 @@ public class TableTest {
     }
 
     @Test
-    public void EmptyTableWhole() {
+    public void EmptyTableWhole() 
+    {
     	Table t = new Table();
     	char[] test = new char[9];
 
@@ -30,7 +32,8 @@ public class TableTest {
       }
 
     @Test
-    public void TableInsert() {
+    public void TableInsert() 
+    {
     	Table t = new Table();
     	char[] test = new char[9];
 

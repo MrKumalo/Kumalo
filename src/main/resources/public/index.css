@@ -1,16 +1,19 @@
 #board {
 	border: 1px solid black;
 	border-collapse: separate;
+	width: 450px;
 }
 #board td {
     border: solid 1px;
-    width: 100px;
-    height: 100px;
+    width: 150px;
     background-color: #ffffff;
     font-size: 0px;
 }
+#board tr {
+	height: 150px;
+}
 #board td p {
 	font-size: 50px;
-	margin-right: auto;
-	margin-left: auto;
+	padding-top: 30px;
+	padding-left: 50px;
 }
