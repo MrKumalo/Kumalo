@@ -1,5 +1,7 @@
 package is.ru.ttt;
 
+import java.util.ArrayList;
+
 public class Game {
 	private Player p1;
 	private Player p2;
@@ -62,6 +64,35 @@ public class Game {
 			throw new IllegalTurnException("Turn must be either 1 (Player 1) or 2 (Player 2)");
 
 		this.turn = turn;
+	}
+
+	public Boolean winningCombinations(ArrayList<Integer> cells)
+	{
+		if(cells.contains(0) && cells.contains(1) && cells.contains(2))
+			return true;
+
+		if(cells.contains(3) && cells.contains(4) && cells.contains(5))
+	 		return true;
+
+	 	if(cells.contains(6) && cells.contains(7) && cells.contains(8))
+	  		return true;
+
+		if(cells.contains(0) && cells.contains(4) && cells.contains(8))
+			return true;
+
+		if(cells.contains(2) && cells.contains(4) && cells.contains(6))
+			return true;
+
+		if(cells.contains(0) && cells.contains(3) && cells.contains(6))
+			return true;
+
+		if(cells.contains(1) && cells.contains(4) && cells.contains(7))
+			return true;
+
+		if(cells.contains(2) && cells.contains(5) && cells.contains(8))
+			return true;
+
+		return false;
 	}
 
 	public String toJson()
