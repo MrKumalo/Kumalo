@@ -1,7 +1,6 @@
 Verkefnalisti:
 
-Gunnar: laga build scriptur fyrir allt
-Arnar: Gera spark
-Axel/Sólberg:Kóða 
-Halli: Fá git til að virka og byrja að skrifa kóða með arnari
-Gadi: Chilla
+- Bæta code coverage
+- Klára leik
+	-Þegar leikur er búinn, selenium test
+-Byrja á pdf skjölum(Sjá verkefnalýsingu)
