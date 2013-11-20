@@ -10,12 +10,10 @@ public class TicTacToe
         
         setPort(Integer.valueOf(System.getenv("PORT")));
 
-        get(new Route("/board") {
+        get(new Route("/getboard") {
             @Override
             public Object handle(Request request, Response response) {
-
                 Table table = new Table();
-
                 return table.toJson();
             }
         });
