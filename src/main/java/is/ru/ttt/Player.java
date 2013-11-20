@@ -27,7 +27,7 @@ public class Player
 	{
 		myTurn = !myTurn;
 	}
-	public void insertIntoTable(int cell) throws OutOfBoundsException
+	public void insertIntoTable(int cell) throws OutOfBoundsException, AlreadyOccupiedException
 	{
 		if(cell >= 0 && cell < 9)
 		{

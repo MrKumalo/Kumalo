@@ -80,21 +80,48 @@ public class PlayerTest{
 		{
 			System.out.println("This should not happen");
 		}
+		catch (AlreadyOccupiedException e)
+  		{
+  			System.out.println("This should not happen");
+  		}
 		
 	}
 
-	 @Test
-	public void testExpectedException3() {
-
-  	try 
-  	{
-    	Player p1 = new Player("p1", true);
-    	p1.insertIntoTable(11);
-  	} 
-  	catch (OutOfBoundsException e) 
-  	{
-    	assertEquals(e.getMessage(), "Input out of bounds");
-  	}
-}
+	@Test
+	public void testExpectedException3() 
+	{
+	  	try 
+	  	{
+	    	Player p1 = new Player("p1", true);
+	    	p1.insertIntoTable(11);
+	  	} 
+	  	catch (OutOfBoundsException e) 
+	  	{
+	    	assertEquals(e.getMessage(), "Input out of bounds");
+	  	}
+	  	catch (AlreadyOccupiedException e)
+	  	{
+	  		System.out.println("This should not happen");
+	  	}
+	}
+	@Test
+	public void AlreadyOccupiedExceptionTest() 
+	{
+	  	try 
+	  	{
+	    	Player p1 = new Player("p1", true);
+	    	p1.insertIntoTable(1);
+	    	p1.insertIntoTable(1);
+	  	} 
+	  	catch (OutOfBoundsException e) 
+	  	{
+	    	System.out.println("This should not happen");
+	  	}
+	  	catch (AlreadyOccupiedException e)
+	  	{
+	  		assertEquals(e.getMessage(), "Cell is already occupied");
+	  	}
+	}
+	
 
 }
