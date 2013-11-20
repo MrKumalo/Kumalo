@@ -22,7 +22,7 @@ public class TicTacToe
                 Table table = new Table();
 
                 Game game;
-                
+
                 try
                 {
                     game = new Game(player1, player2, table, 1);
