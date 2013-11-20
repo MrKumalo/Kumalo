@@ -59,7 +59,7 @@
 
   <script>
   $(document).ready(function () {
-    $('#container').hide();
+    $('.container').hide();
     $('#lobby').show();
 
     $('#board td').click(function(event) {
@@ -143,6 +143,11 @@ function addPlayers() {
         data: 'player1=' + player1 + '&player2=' + player2
       }).done(function(sum) {
           console.log(sum);
+
+          $('.container').show();
+          $('#lobby').hide();
+
+
       }).fail(function() {
           console.log("foo");
       });    

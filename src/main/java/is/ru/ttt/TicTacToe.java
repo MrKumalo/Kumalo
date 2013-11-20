@@ -16,7 +16,8 @@ public class TicTacToe
                 String p1 = request.queryParams("player1");
                 String p2 = request.queryParams("player2");
                 
-                System.out.println(p1 + ":" + p2);
+                Player player1 = new Player(p1, true);
+                Player player2 = new Player(p2, false);
 
                 String json = "[{\"Player1\":\"" + p1 + "\"},{\"Player2\":\"" + p2 + "\"}]";
                 return json;
