@@ -6,7 +6,7 @@ public class Game {
 	private Table table;
 	private int turn;
 
-	public Game(Player p1, Player p2, Table table, int turn)
+	public Game(Player p1, Player p2, Table table, int turn) throws IllegalTurnException
 	{
 		this.p1 = p1;
 		this.p2 = p2;
@@ -56,7 +56,7 @@ public class Game {
 		this.table = table;
 	}	
 
-	public void setTurn(int turn)
+	public void setTurn(int turn) throws IllegalTurnException
 	{
 		if(turn != 1 || turn != 2)
 			throw new IllegalTurnException("Turn must be either 1 (Player 1) or 2 (Player 2)");
