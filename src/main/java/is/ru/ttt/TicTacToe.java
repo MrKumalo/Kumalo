@@ -3,16 +3,29 @@ package is.ru.ttt;
 import static spark.Spark.*;
 import spark.*;
 
-public class TicTacToe {
+public class TicTacToe 
+{
     public static void main(String[] args) {
         staticFileLocation("/public");
         
         setPort(Integer.valueOf(System.getenv("PORT")));
 
-        get(new Route("/hello") {
+        post(new Route("/players") {
             @Override
             public Object handle(Request request, Response response) {
-                return "Hello World!";
+                String player1 = request.queryParams("player1");
+                String player2 = request.queryParams("player2");
+                String json = "[{\"Player1\":\"" + player1 + "\"},{\"Player2\":\""
+                + player2 + "\"}]";
+                return json;
+           }
+        });
+
+        get(new Route("/getboard") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Table table = new Table();
+                return table.toJson();
             }
         });
         
