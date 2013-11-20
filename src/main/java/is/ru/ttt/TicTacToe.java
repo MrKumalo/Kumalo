@@ -3,16 +3,20 @@ package is.ru.ttt;
 import static spark.Spark.*;
 import spark.*;
 
-public class TicTacToe {
+public class TicTacToe 
+{
     public static void main(String[] args) {
         staticFileLocation("/public");
         
         setPort(Integer.valueOf(System.getenv("PORT")));
 
-        get(new Route("/hello") {
+        get(new Route("/board") {
             @Override
             public Object handle(Request request, Response response) {
-                return "Hello World!";
+
+                Table table = new Table();
+
+                return table.toJson();
             }
         });
         
