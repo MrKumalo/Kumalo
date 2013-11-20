@@ -35,6 +35,10 @@ public class Player
 				{
 					inserted.add(cell);
 				}
+				else
+				{
+					throw new AlreadyOccupiedException("Cell is already occupied");
+				}
 
 		}
 		else
