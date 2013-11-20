@@ -16,8 +16,8 @@
 
     <div class="container">
     <div id="playernames">
-      <h4 id="player1"></h4>
-      <h4 id="player2"></h4>
+      <h4 id="p1"></h4>
+      <h4 id="p2"></h4>
     </div>
       <h2>Tic Tac Toe</h2>
       <table id="board" class="table">
@@ -43,10 +43,10 @@
     <div id="lobby">
       <form method="post" action="/players" class="form-inline" role="form">
         <div class="form-group">
-          <input type="text" class="form-control" name="player1" id="player1" placeholder="Tala 1">
+          <input type="text" class="form-control" name="player1" id="player1" placeholder="Player 1">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="player2" id="player2" placeholder="Tala 2">
+          <input type="text" class="form-control" name="player2" id="player2" placeholder="Player 2">
         </div>
         <button type="submit" class="btn btn-default">Play game</button>
       </form>
@@ -116,5 +116,19 @@
     });
   }
 
+  form.submit(function(e) {
+        var a = $("#player1").val();
+        var b = $("#player2").val();
+        $.ajax({
+          type: form.attr('method'),
+          url: form.attr('action'),
+          data: 'player1=' + a + '&player2=' + b
+        }).done(function(sum) {
+          getPlayerNames();
+        }).fail(function() {
+          $('#lobby').html("<h1>You my friend fucked up really badly</h1>");
+        });
+        e.preventDefault();
+      });
   </script>
 </html>

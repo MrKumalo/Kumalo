@@ -10,7 +10,7 @@ public class TicTacToe
         
         setPort(Integer.valueOf(System.getenv("PORT")));
 
-        get(new Route("/players") {
+        post(new Route("/players") {
             @Override
             public Object handle(Request request, Response response) {
                 String player1 = request.queryParams("player1");
