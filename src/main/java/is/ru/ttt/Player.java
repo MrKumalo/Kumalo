@@ -26,14 +26,19 @@ public class Player
 	{
 		myTurn = !myTurn;
 	}
-	public void insertIntoTable(int cell)
+	public void insertIntoTable(int cell) throws OutOfBoundCellException
 	{
-		if(cell >= 0 && cell < 9)
+		if(cell < 0 || cell > 8)
+		{
+			throw new OutOfBoundCellException("Cell out of bounds");
+		}
+		else
 		{
 			if(!inserted.contains(cell))
 			{
 				inserted.add(cell);
 			}
+			
 		}
 	}
 	public ArrayList<Integer> getInserted()
