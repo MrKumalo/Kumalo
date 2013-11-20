@@ -15,6 +15,10 @@
   <body>
 
     <div class="container">
+    <div id="playernames">
+      <h4 id="player1"></h4>
+      <h4 id="player2"></h4>
+    </div>
       <h2>Tic Tac Toe</h2>
       <table id="board" class="table">
         <tr>
@@ -36,6 +40,18 @@
       <div id="results"></div>
     </div>
 
+    <div id="lobby">
+      <form method="post" action="/players" class="form-inline" role="form">
+        <div class="form-group">
+          <input type="text" class="form-control" name="player1" id="player1" placeholder="Tala 1">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="player2" id="player2" placeholder="Tala 2">
+        </div>
+        <button type="submit" class="btn btn-default">Play game</button>
+      </form>
+    </div>
+
     <!-- load jquery -->
 
     <!-- use ajax to submit form, retreive the result and display on the page -->
@@ -43,9 +59,8 @@
 
   <script>
   $(document).ready(function () {
-
-    getboard();
-
+    $('#container').hide();
+    $('#lobby').show();
 
     $('#board td').click(function(event) {
       var id = $(this).attr('id');
@@ -59,6 +74,26 @@
     });
   });
 
+  function getPlayerNames() {
+    $.ajax({
+        type: "GET",
+        url: "/",
+        dataType:"json",
+        success:function(data){
+          $('#lobby').hide();
+          $('#container').show();
+          for(var i = 0; i < data.length; i++)
+          {
+            $('#player' + (i + 1)).append(data[i]["player" + i]);
+          }
+          getboard();
+        },
+        error: function (xhr, err) {
+        console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
+        console.log("responseText: " + xhr.responseText);
+        }
+    });
+  }
 
   function getboard() {
     $.ajax({
