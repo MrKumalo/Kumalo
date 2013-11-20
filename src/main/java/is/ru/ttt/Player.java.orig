@@ -1,0 +1,65 @@
+package is.ru.ttt;
+import java.util.ArrayList;
+
+public class Player
+{
+
+	private int turnCount;
+	private String player;
+	private Boolean myTurn;
+	ArrayList<Integer> inserted = new ArrayList<Integer>();
+	public Player(String playerName, Boolean turn)
+	{
+		player = playerName;
+		myTurn = turn;
+		turnCount = 0;
+	}
+	public String getPlayer()
+	{
+		return this.player;
+	}
+	
+	public Boolean getTurn()
+	{
+		return this.myTurn;
+	}
+	public void turn()
+	{
+		myTurn = !myTurn;
+	}
+<<<<<<< HEAD
+	public void insertIntoTable(int cell) throws OutOfBoundCellException
+=======
+	public void insertIntoTable(int cell) throws OutOfBoundsException
+>>>>>>> b9e1dedac7c04afff4af7ddfacac09baf2a4b64b
+	{
+		if(cell < 0 || cell > 8)
+		{
+			throw new OutOfBoundCellException("Cell out of bounds");
+		}
+		else
+		{
+<<<<<<< HEAD
+			if(!inserted.contains(cell))
+			{
+				inserted.add(cell);
+			}
+			
+=======
+				if(!inserted.contains(cell))
+				{
+					inserted.add(cell);
+				}
+
+		}
+		else
+		{
+			throw new OutOfBoundsException("Input out of bounds");
+>>>>>>> b9e1dedac7c04afff4af7ddfacac09baf2a4b64b
+		}
+	}
+	public ArrayList<Integer> getInserted()
+	{
+		return inserted;
+	}
+}
