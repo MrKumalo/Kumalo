@@ -16,8 +16,8 @@
 
     <div class="container">
     <div id="playernames">
-      <h4 id="player1"></h4>
-      <h4 id="player2"></h4>
+      <h4 id="p1"></h4>
+      <h4 id="p2"></h4>
     </div>
       <h2>Tic Tac Toe</h2>
       <table id="board" class="table">
@@ -67,12 +67,12 @@
         $(this).addClass('used');
         $(this).append('<p>X</p>');
       }
-      getboard();
+
       console.log(id);
     });
   });
 
- 
+ /*
   function getboard() {
     $.ajax({
         type: "GET",
@@ -93,6 +93,7 @@
         }
     });
   }
+  */
 /*
   form.submit(function(e) {
         var a = $("#player1").val();
@@ -126,10 +127,9 @@ function addPlayers() {
           
           for(var i = 0; i < data.length; i++)
           {
-            $('#player' + (i + 1)).append(data[i]["player" + i]);
+            $('#p' + (i + 1)).append(data[i]["p" + i]);
           }
 
-          getboard();
 
       }).fail(function() {
           console.log("foo");
