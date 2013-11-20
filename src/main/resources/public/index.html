@@ -44,6 +44,10 @@
 
   <script>
   $(document).ready(function () {
+
+    getboard();
+
+
     $('#board td').click(function(event) {
       var id = $(this).attr('id');
       if(!$(this).hasClass('used'))
@@ -54,5 +58,22 @@
       console.log(id);
     });
   });
+
+
+  function getboard() {
+    $.ajax({
+        type: "GET",
+        url: "/getboard",
+        dataType:"json",
+        success:function(data){
+            console.log(data);
+        },
+        error: function (xhr, err) {
+        console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
+        console.log("responseText: " + xhr.responseText);
+        }
+    });
+  }
+
   </script>
 </html>

@@ -31,20 +31,18 @@ public class Table{
 		this.table[location] = input;
 	}
 
-
-	//[{"creatorUsername":"qweqwe","created":1384959050196,"id":59,"imageId":48,"userID":13,"displayName":"soli"}]
-    public String toJson()
+	public String toJson()
     {
-    	String result = "[{";
+    	String result = "[";
     	for(int i = 0; i < Rows; i++)
 		{
-			result += "\"cell" + i + "\":\"" + this.table[i] + "\"";
+			result += "{\"cell" + i + "\":\"" + this.table[i] + "\"}";
 			if(i < 8)
 			{
 				result += ",";	
 			}
 		}
-		result += "}]";
+		result += "]";
 		return result;
     }
 }
