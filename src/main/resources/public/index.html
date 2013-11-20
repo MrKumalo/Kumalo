@@ -74,26 +74,7 @@
     });
   });
 
-  function getPlayerNames() {
-    $.ajax({
-        type: "GET",
-        url: "/",
-        dataType:"json",
-        success:function(data){
-          $('#lobby').hide();
-          $('#container').show();
-          for(var i = 0; i < data.length; i++)
-          {
-            $('#player' + (i + 1)).append(data[i]["player" + i]);
-          }
-          getboard();
-        },
-        error: function (xhr, err) {
-        console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
-        console.log("responseText: " + xhr.responseText);
-        }
-    });
-  }
+ 
 
   function getboard() {
     $.ajax({
@@ -143,10 +124,15 @@ function addPlayers() {
         data: 'player1=' + player1 + '&player2=' + player2
       }).done(function(sum) {
           console.log(sum);
-
-          $('.container').show();
+          
           $('#lobby').hide();
-
+          $('.container').show();
+          
+          for(var i = 0; i < data.length; i++)
+          {
+            $('#player' + (i + 1)).append(data[i]["player" + i]);
+          }
+          getboard();
 
       }).fail(function() {
           console.log("foo");
