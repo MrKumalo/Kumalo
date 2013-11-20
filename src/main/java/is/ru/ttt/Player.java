@@ -2,7 +2,7 @@ package is.ru.ttt;
 
 public class Player
 {
-
+	private int turnCount;
 	private String player;
 	private Boolean myTurn;
 
@@ -10,6 +10,7 @@ public class Player
 	{
 		player = playerName;
 		myTurn = turn;
+		turnCount = 0;
 	}
 	public String getPlayer()
 	{
@@ -22,8 +23,11 @@ public class Player
 	}
 	public void turn()
 	{
+		turnCount++;
 		myTurn = !myTurn;
 	}
-
-	
+	public int getTurnCount()
+	{
+		return turnCount;
+	}
 }
