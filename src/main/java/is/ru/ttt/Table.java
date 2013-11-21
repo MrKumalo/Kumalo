@@ -28,10 +28,10 @@ public class Table{
 
 	public void setX(char input, int location)
 	{
-		if(input != 'X' || input != 'O')
+		/*if(input != 'X' || input != 'O')
 		{
 			throw new IllegalPlayerOptionException("Not a valid input");
-		}
+		}*/
 		if(this.table[location] != 'E')
 		{
 			throw new AlreadyOccupiedException("Cell already occupied");
