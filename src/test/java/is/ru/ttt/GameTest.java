@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import java.util.ArrayList;
 
 public class GameTest
 {
@@ -53,7 +54,7 @@ public class GameTest
 		}
 		catch(IllegalTurnException e)
 		{
-			System.out.println("status: OK");
+			System.out.println("setTurnGameTest: OK");
 		}
 
 		try
@@ -81,7 +82,7 @@ public class GameTest
 		}
 		catch(IllegalTurnException e)
 		{
-			System.out.println("status: OK");
+			System.out.println("setP1GameTest: OK");
 		}
 
 		Player player3 = new Player("p3", true);
@@ -106,7 +107,7 @@ public class GameTest
 		}
 		catch(IllegalTurnException e)
 		{
-			System.out.println("status: OK");
+			System.out.println("setP2GameTest: OK");
 		}
 
 		Player player3 = new Player("p3", true);
@@ -129,7 +130,87 @@ public class GameTest
 		}
 		catch(IllegalTurnException e)
 		{
-			System.out.println("status: OK");
+			System.out.println("CreateIllegalTurnGameTest: OK");
+		}
+	}
+
+
+
+	@Test
+	public void winningCombinationsGameTest()
+	{
+		Player player1 = new Player("p1", true);
+		Player player2 = new Player("p2", false);
+		Table t = new Table();
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		
+		Game game = null;
+		try
+		{
+			game = new Game(player1, player2, t, 1);
+			assertEquals(false, game.winningCombinations(list));
+			//Testa top line
+			list.add(0);
+			list.add(1);
+			list.add(2);
+			assertEquals(true, game.winningCombinations(list));
+
+			//Testa middle
+			ArrayList<Integer> middle = new ArrayList<Integer>();
+			assertEquals(false, game.winningCombinations(middle));
+			middle.add(3);
+			middle.add(4);
+			middle.add(5);
+			assertEquals(true, game.winningCombinations(middle));
+
+			//Testa down line
+			ArrayList<Integer> lowest = new ArrayList<Integer>();
+			assertEquals(false, game.winningCombinations(lowest));
+			lowest.add(8);
+			lowest.add(6);
+			lowest.add(7);
+			assertEquals(true, game.winningCombinations(lowest));
+
+
+			//Testa left side
+			ArrayList<Integer> left = new ArrayList<Integer>();
+			assertEquals(false, game.winningCombinations(left));
+			left.add(0);
+			left.add(6);
+			left.add(3);
+			assertEquals(true, game.winningCombinations(left));
+
+			//testing right side
+			ArrayList<Integer> right = new ArrayList<Integer>();
+			assertEquals(false, game.winningCombinations(right));
+			right.add(8);
+			right.add(2);
+			right.add(5);
+			assertEquals(true, game.winningCombinations(right));
+
+
+			//Testing ska byrja efst vinstri
+			ArrayList<Integer> diagonal1 = new ArrayList<Integer>();
+			assertEquals(false, game.winningCombinations(diagonal1));
+			diagonal1.add(0);
+			diagonal1.add(4);
+			diagonal1.add(8);
+			assertEquals(true, game.winningCombinations(diagonal1));
+
+
+			//Testing ska byrja efst hægri
+			ArrayList<Integer> diagonal2 = new ArrayList<Integer>();
+			assertEquals(false, game.winningCombinations(diagonal2));
+			diagonal2.add(6);
+			diagonal2.add(4);
+			diagonal2.add(2);
+			assertEquals(true, game.winningCombinations(diagonal2));
+
+
+		}
+		catch(IllegalTurnException e)
+		{
+			System.out.println("winningCombinationsGameTest: error");
 		}
 	}
 
@@ -150,16 +231,11 @@ public class GameTest
 			System.out.println("status: error");
 		}
 
-
 		String json = game.toJson();
-
 		String tablejson = "{\"cell0\":\"E\"},{\"cell1\":\"E\"},{\"cell2\":\"E\"},{\"cell3\":\"E\"},{\"cell4\":\"E\"},{\"cell5\":\"E\"},{\"cell6\":\"E\"},{\"cell7\":\"E\"},{\"cell8\":\"E\"}";
 		String p1json = ",{\"Player1\":\"Mario\"}";
 		String p2json = ",{\"Player2\":\"Dilbert\"}";
 		String turnjson =  ",{\"turn\":\"1\"}";
-
-		
-
 		String jsonTest = "[" + tablejson + p1json + p2json + turnjson + "]";
 		assertEquals(game.toJson(), jsonTest);
 
