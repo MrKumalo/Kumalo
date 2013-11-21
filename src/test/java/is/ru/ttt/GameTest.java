@@ -312,7 +312,7 @@ public class GameTest
 		String tablejson = "{\"cell0\":\"E\"},{\"cell1\":\"E\"},{\"cell2\":\"E\"},{\"cell3\":\"E\"},{\"cell4\":\"E\"},{\"cell5\":\"E\"},{\"cell6\":\"E\"},{\"cell7\":\"E\"},{\"cell8\":\"E\"}";
 		String p1json = ",{\"Player1\":\"Mario\"}";
 		String p2json = ",{\"Player2\":\"Dilbert\"}";
-		String turnjson =  ",{\"turn\":\"1\"}";
+		String turnjson =  ",{\"turn\":" + 1 + "}";
 		String jsonTest = "[" + tablejson + p1json + p2json + turnjson + "]";
 		assertEquals(game.toJson(), jsonTest);
 
