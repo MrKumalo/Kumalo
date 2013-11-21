@@ -57,7 +57,7 @@ public class TicTacToe
                 }
                 catch(IllegalPlayerOptionException ex)
                 {
-                    return "[{\"Status\":\"error\"}]";
+                    return "[{\"Status\":\"error\"}]";''
                 }
                 catch(OutOfBoundsException ex)
                 {
@@ -87,6 +87,9 @@ public class TicTacToe
                 {
                     return "[{\"Status\":\"error\"}]";
                 }
+
+                if(game.winningCombinations(player.getInserted()))
+                    return "[{\"Status\":\"" + player.getPlayerName() + "\"}]";
 
                 return game.toJson();  
             }
