@@ -60,18 +60,59 @@
   $(document).ready(function () {
     $('.container').hide();
     $('#lobby').show();
-
+  });
+  
     $('#board td').click(function(event) {
       var id = $(this).attr('id');
       if(!$(this).hasClass('used'))
       {
-        $(this).addClass('used');
-        $(this).append('<p>X</p>');
-      }
+        var turn;
+        if($('#p2turn').val() == '') 
+        {
+            turn = 'X';
+        }
+        else
+        {
+            turn = 'O';
+        }
 
-      console.log(id);
+
+        $.ajax({
+            type: "POST",
+            url: "/makemove",
+            data: 'cell=' + id + '&player=' + turn,
+            success: function (data) {
+              
+              console.log(data);
+
+              if(turn == 'X')
+              {
+                 $('#p2turn').html('<p>your turn!</p>');
+                  $('#p1turn').empty();
+              }
+              else
+              {
+                 $('#p1turn').empty();
+                  $('#p2turn').html('<p>your turn!</p>');
+              }
+
+
+              $(this).addClass('used');
+              $(this).append('<p>' + turn + '</p>');
+
+              
+            },
+            dataType: "json"
+        });
+
+
+
+
+
+
+      }
     });
-  });
+
 
 function addPlayers() {
     var player1 = $("#player1").val();
@@ -84,7 +125,6 @@ function addPlayers() {
         data: 'player1=' + player1 + '&player2=' + player2,
         success: function (data) {
           
-
           $('#p1').html('<p>X: ' + data[9]['Player1'] + '</p>');
           $('#p2').html('<p>O: ' + data[10]['Player2'] + '</p>');
 

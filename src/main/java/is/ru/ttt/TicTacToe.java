@@ -50,6 +50,11 @@ public class TicTacToe
             @Override
             public Object handle(Request request, Response response) {
 
+                System.out.println("foo");
+
+                System.out.println(game.toJson());
+
+
                 int cell = Integer.valueOf(request.queryParams("cell"));
                 String p = request.queryParams("player");
                 char option = p.charAt(0);
@@ -101,6 +106,8 @@ public class TicTacToe
                 counter++;
                 if(counter == 9)
                     return "[{\"Status\":\"draw\"}]";
+
+                System.out.println(game.toJson());
 
                 return game.toJson();  
             }
