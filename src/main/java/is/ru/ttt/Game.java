@@ -21,6 +21,10 @@ public class Game {
 
 	public Game()
 	{
+		p1 = null;
+		p2 = null;
+		table = null;
+		turn = -1;
 	}
 
 	public Player getP1()
@@ -99,9 +103,9 @@ public class Game {
 	{
 		String json = "[";
 		json += table.toJson();
-		json += ",";
+		json += ",{\"Player1\"";
 		json += p1.toJson();
-		json += ",";
+		json += ",{\"Player2\"";
 		json += p2.toJson();
 		json += ",{\"turn\":\"" + turn + "\"}";
 		json += "]";

@@ -26,19 +26,20 @@ public class Table{
 		return this.table;
 	}
 
-	public void setX(char input, int location)
+	public void setX(char input, int location) throws IllegalPlayerOptionException, 
+		AlreadyOccupiedException, OutOfBoundsException
 	{
-		/*if(input != 'X' || input != 'O')
+		if(location > 8 || location < 0)
+		{
+			throw new OutOfBoundsException("Location Out Of Bounds");
+		}
+		if(input != 'X' && input != 'O')
 		{
 			throw new IllegalPlayerOptionException("Not a valid input");
-		}*/
+		}
 		if(this.table[location] != 'E')
 		{
 			throw new AlreadyOccupiedException("Cell already occupied");
-		}
-		if(location < 0 && location > 8)
-		{
-			throw new OutOfBoundsException("Location Out Of Bounds");
 		}
 		this.table[location] = input;
 	}

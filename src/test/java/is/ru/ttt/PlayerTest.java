@@ -38,7 +38,14 @@ public class PlayerTest{
 		assertTrue(player1.getTurn());
 		assertFalse(player2.getTurn());
 	}
-
+	@Test
+	public void defaultConsTest()
+	{
+		Player p1 = new Player();
+		assertEquals(null, p1.getPlayerName());
+		assertEquals(null, p1.getTurn());
+		assertEquals(0, p1.getInserted().size());
+	}
 	@Test
 	public void turnTest()
 	{
@@ -69,12 +76,7 @@ public class PlayerTest{
 			p1.insertIntoTable(3);
 			assertArrayEquals(test.toArray(), p1.getInserted().toArray());
 
-			ArrayList<Integer> test2 = new ArrayList<Integer>();
-			test2.add(1);
-			p2.insertIntoTable(1);
-			assertEquals(test2.toArray(), p2.getInserted().toArray());
-			p2.insertIntoTable(1);
-			assertEquals(test2.toArray(), p2.getInserted().toArray());
+
 		}
 		catch(OutOfBoundsException e)
 		{
@@ -127,7 +129,7 @@ public class PlayerTest{
 	public void toJsonTest()
 	{
 		Player p1 = new Player("Mario", true);
-		String jsonTest = "{\"Player\":\"Mario\"}";
+		String jsonTest = ":\"Mario\"}";
 		assertEquals(p1.toJson(), jsonTest);
 	}
 
