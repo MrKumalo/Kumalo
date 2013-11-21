@@ -57,15 +57,15 @@ public class TicTacToe
                 }
                 catch(IllegalPlayerOptionException ex)
                 {
-                    return "[{\"Status\":\"error\"}]";''
+                    return "[{\"Status\":\"player_error\"}]";''
                 }
                 catch(OutOfBoundsException ex)
                 {
-                    return "[{\"Status\":\"error\"}]";
+                    return "[{\"Status\":\"outofbounds_error\"}]";
                 }
                 catch(AlreadyOccupiedException ex)
                 {
-                    return "[{\"Status\":\"error\"}]";
+                    return "[{\"Status\":\"occupied_error\"}]";
                 }
 
                 Player player;
@@ -81,11 +81,11 @@ public class TicTacToe
                 }
                 catch(OutOfBoundsException ex)
                 {
-                    return "[{\"Status\":\"error\"}]";
+                    return "[{\"Status\":\"outofbounds_error\"}]";
                 }
                 catch(AlreadyOccupiedException ex)
                 {
-                    return "[{\"Status\":\"error\"}]";
+                    return "[{\"Status\":\"occupied_error\"}]";
                 }
 
                 if(game.winningCombinations(player.getInserted()))
