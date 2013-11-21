@@ -21,6 +21,10 @@ public class Game {
 
 	public Game()
 	{
+		p1 = null;
+		p2 = null;
+		table = null;
+		turn = -1;
 	}
 
 	public Player getP1()

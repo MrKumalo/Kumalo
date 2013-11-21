@@ -41,6 +41,16 @@ public class GameTest
 	}
 
 	@Test
+	public void defaultConsTest()
+	{
+		Game g = new Game();
+		assertEquals(null, g.getP1());
+		assertEquals(null, g.getP2());
+		assertEquals(null, g.getTable());
+		assertEquals(-1, g.getTurn());
+	}
+
+	@Test
 	public void setTurnGameTest()
 	{
 		Player player1 = new Player("p1", true);
