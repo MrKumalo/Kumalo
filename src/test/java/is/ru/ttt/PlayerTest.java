@@ -17,21 +17,21 @@ import org.junit.Test;
 public class PlayerTest{
 
 	@Test
-	public void playerName()
+	public void playerNameTest()
 	{
 		Player player1 = new Player("Halli", true);
-		 assertEquals("Halli", player1.getPlayer());
+		 assertEquals("Halli", player1.getPlayerName());
 	}
 
 	@Test
-	public void isMyTurn()
+	public void isMyTurnTest()
 	{
 		Player player2 = new Player("Bull", true);
 		assertEquals(true, player2.getTurn());
 	}
 
 	@Test
-	public void TurnTwoPlayer()
+	public void turnTwoPlayerTest()
 	{
 		Player player1 = new Player("p1", true);
 		Player player2 = new Player("p2", false);
@@ -40,7 +40,7 @@ public class PlayerTest{
 	}
 
 	@Test
-	public void TurnTest()
+	public void turnTest()
 	{
 		Player player1 = new Player("p1", true);
 		Player player2 = new Player("p2", false);
@@ -88,7 +88,7 @@ public class PlayerTest{
 	}
 
 	@Test
-	public void testExpectedException3() 
+	public void outOfBoundsExceptionTest() 
 	{
 	  	try 
 	  	{
@@ -105,7 +105,7 @@ public class PlayerTest{
 	  	}
 	}
 	@Test
-	public void AlreadyOccupiedExceptionTest() 
+	public void alreadyOccupiedExceptionTest() 
 	{
 	  	try 
 	  	{

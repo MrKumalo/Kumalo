@@ -5,18 +5,18 @@ public class Player
 {
 
 	private int turnCount;
-	private String player;
+	private String playerName;
 	private Boolean myTurn;
 	ArrayList<Integer> inserted = new ArrayList<Integer>();
-	public Player(String playerName, Boolean turn)
+	public Player(String name, Boolean turn)
 	{
-		player = playerName;
+		playerName = name;
 		myTurn = turn;
 		turnCount = 0;
 	}
-	public String getPlayer()
+	public String getPlayerName()
 	{
-		return this.player;
+		return this.playerName;
 	}
 	
 	public Boolean getTurn()
@@ -53,7 +53,7 @@ public class Player
 
 	public String toJson()
 	{
-		String json = "{\"Player1\":\"" + player + "\"}";
+		String json = "{\"Player1\":\"" + playerName + "\"}";
 		return json;
 	}
 }
