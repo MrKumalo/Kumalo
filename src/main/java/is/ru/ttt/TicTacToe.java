@@ -23,6 +23,9 @@ public class TicTacToe
             public Object handle(Request request, Response response) {
                 String p1 = request.queryParams("player1");
                 String p2 = request.queryParams("player2");
+
+                if(p2.equals(p1))
+                    return "[{\"Status\":\"player_names\"}]";
                 
                 player1 = new Player(p1, true);
                 player2 = new Player(p2, false);
@@ -77,6 +80,9 @@ public class TicTacToe
 
                 try
                 {
+                    if(!player.getTurn())
+                        return "[{\"Status\":\"player_turn\"}]";
+                    
                     player.insertIntoTable(cell);
                 }
                 catch(OutOfBoundsException ex)
