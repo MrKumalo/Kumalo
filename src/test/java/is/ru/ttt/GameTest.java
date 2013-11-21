@@ -40,6 +40,29 @@ public class GameTest
 	}
 
 	@Test
+	public void setTurnGameTest()
+	{
+		Player player1 = new Player("p1", true);
+		Player player2 = new Player("p2", false);
+		Table t = new Table();
+		
+		Game game = null;
+		try
+		{
+			game = new Game(player1, player2, t, 1);
+		}
+		catch(IllegalTurnException e)
+		{
+			System.out.println("status: OK");
+		}
+
+		game.setTurn(2);
+
+		assertEquals(2, game.getTurn());
+	}
+
+
+	@Test
 	public void CreateIllegalTurnGameTest()
 	{
 		Player player1 = new Player("p1", true);
