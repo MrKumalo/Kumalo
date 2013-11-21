@@ -13,6 +13,8 @@ public class TicTacToe
     public static Player player1;
     public static Player player2;
 
+    public int counter = 0;
+
     public static void main(String[] args) {
         staticFileLocation("/public");
         
@@ -93,9 +95,12 @@ public class TicTacToe
                 {
                     return "[{\"Status\":\"occupied_error\"}]";
                 }
-
                 if(game.winningCombinations(player.getInserted()))
                     return "[{\"Status\":\"" + player.getPlayerName() + "\"}]";
+
+                counter++;
+                if(counter == 9)
+                    return "[{\"Status\":\"draw\"}]";
 
                 return game.toJson();  
             }
