@@ -13,7 +13,7 @@ public class TicTacToe
     public static Player player1;
     public static Player player2;
 
-    public int counter = 0;
+    public static int counter = 0;
 
     public static void main(String[] args) {
         staticFileLocation("/public");
