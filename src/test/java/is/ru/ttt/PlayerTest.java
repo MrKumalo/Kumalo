@@ -134,7 +134,7 @@ public class PlayerTest{
 	public void toJsonTest()
 	{
 		Player p1 = new Player("Mario", true);
-		String jsonTest = "{\"Player\":\"Mario\"}";
+		String jsonTest = "{:\"Mario\"}";
 		assertEquals(p1.toJson(), jsonTest);
 	}
 

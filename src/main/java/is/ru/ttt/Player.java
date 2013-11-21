@@ -58,7 +58,7 @@ public class Player
 
 	public String toJson()
 	{
-		String json = "{\"Player\":\"" + playerName + "\"}";
+		String json = "{:\"" + playerName + "\"}";
 		return json;
 	}
 }

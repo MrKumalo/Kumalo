@@ -148,8 +148,13 @@ public class GameTest
 		String json = game.toJson();
 
 		String tablejson = "{\"cell0\":\"X\"},{\"cell1\":\"E\"},{\"cell2\":\"O\"},{\"cell3\":\"E\"},{\"cell4\":\"X\"},{\"cell5\":\"O\"},{\"cell6\":\"O\"},{\"cell7\":\"E\"},{\"cell8\":\"X\"}";
-		String p1json = "{\"Player\":\"Mario\"}";
-		String p2json = "{\"Player\":\"Dilbert\"}";
+		String p1json = "{\"Player1\":\"Mario\"}";
+		String p2json = "{\"Player2\":\"Dilbert\"}";
+
+
+		System.out.println();
+
+
 
 	}
 }
