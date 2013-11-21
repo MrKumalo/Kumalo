@@ -15,10 +15,6 @@
   <body>
 
     <div class="container">
-    <div id="playernames">
-      <h4 id="p1"></h4>
-      <h4 id="p2"></h4>
-    </div>
       <h2>Tic Tac Toe</h2>
       <table id="board" class="table">
         <tr>
@@ -37,6 +33,10 @@
           <td id="cell8"></td>
         </tr>
       </table>
+        <div id="playernames">
+        <div id="p1"><span id="p1turn"></span></div>
+        <div id="p2"><span id="p2turn"></span></div>
+     </div>
       <div id="results"></div>
     </div>
 
@@ -119,21 +119,23 @@ function addPlayers() {
     $.ajax({
         type: "POST",
         url: "/players",
-        data: 'player1=' + player1 + '&player2=' + player2
-      }).done(function(data) {
+        data: 'player1=' + player1 + '&player2=' + player2,
+        success: function (data) {
           
+
+          $('#p1').html('<p>X: ' + data[9]['Player1'] + '</p>');
+          $('#p2').html('<p>O: ' + data[10]['Player2'] + '</p>');
+
+
+          $('#p2turn').html('<p>your turn!</p>');
+
           $('#lobby').hide();
           $('.container').show();
           
-          for(var i = 0; i < data.length; i++)
-          {
-            $('#p' + (i + 1)).append(data[i]["p" + i]);
-          }
-
-
-      }).fail(function() {
-          console.log("foo");
-      });    
+          console.log(data);
+        },
+        dataType: "json"
+    });
     return false;
 }
 
