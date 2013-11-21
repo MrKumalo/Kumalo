@@ -76,12 +76,7 @@ public class PlayerTest{
 			p1.insertIntoTable(3);
 			assertArrayEquals(test.toArray(), p1.getInserted().toArray());
 
-			ArrayList<Integer> test2 = new ArrayList<Integer>();
-			test2.add(1);
-			p2.insertIntoTable(1);
-			assertEquals(test2.toArray(), p2.getInserted().toArray());
-			p2.insertIntoTable(1);
-			assertEquals(test2.toArray(), p2.getInserted().toArray());
+
 		}
 		catch(OutOfBoundsException e)
 		{
