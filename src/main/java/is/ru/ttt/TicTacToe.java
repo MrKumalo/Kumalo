@@ -60,7 +60,7 @@ public class TicTacToe
                 }
                 catch(IllegalPlayerOptionException ex)
                 {
-                    return "[{\"Status\":\"player_error\"}]";''
+                    return "[{\"Status\":\"player_error\"}]";
                 }
                 catch(OutOfBoundsException ex)
                 {
@@ -82,7 +82,7 @@ public class TicTacToe
                 {
                     if(!player.getTurn())
                         return "[{\"Status\":\"player_turn\"}]";
-                    
+
                     player.insertIntoTable(cell);
                 }
                 catch(OutOfBoundsException ex)
