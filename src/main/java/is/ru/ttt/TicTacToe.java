@@ -91,6 +91,7 @@ public class TicTacToe
                         return "[{\"Status\":\"player_turn\"}]";
 
                     player.insertIntoTable(cell);
+                    player.setTurn(!player.getTurn());
                 }
                 catch(OutOfBoundsException ex)
                 {
@@ -103,6 +104,11 @@ public class TicTacToe
                 if(game.winningCombinations(player.getInserted()))
                     return "[{\"Status\":\"" + player.getPlayerName() + "\"}]";
 
+                if(game.getTurn() == 1)
+                    game.setTurn(2);
+                else
+                    game.setTurn(1);
+                
                 counter++;
                 if(counter == 9)
                     return "[{\"Status\":\"draw\"}]";
