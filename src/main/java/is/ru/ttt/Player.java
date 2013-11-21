@@ -8,6 +8,11 @@ public class Player
 	private String playerName;
 	private Boolean myTurn;
 	ArrayList<Integer> inserted = new ArrayList<Integer>();
+	
+	public Player()
+	{
+	}
+
 	public Player(String name, Boolean turn)
 	{
 		playerName = name;
@@ -53,7 +58,7 @@ public class Player
 
 	public String toJson()
 	{
-		String json = "{\"Player1\":\"" + playerName + "\"}";
+		String json = "{\"Player\":\"" + playerName + "\"}";
 		return json;
 	}
 }
