@@ -41,7 +41,6 @@ public class Table{
 		{
 			throw new OutOfBoundsException("Location Out Of Bounds");
 		}
-		*/
 		this.table[location] = input;
 	}
 
