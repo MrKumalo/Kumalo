@@ -36,7 +36,7 @@ public class Table{
 		{
 			throw new AlreadyOccupiedException("Cell already occupied");
 		}
-		if(location < 0 || location > 8)
+		if(location < 0 && location > 8)
 		{
 			throw new OutOfBoundsException("Location Out Of Bounds");
 		}
