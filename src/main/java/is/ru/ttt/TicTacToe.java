@@ -50,14 +50,12 @@ public class TicTacToe
             @Override
             public Object handle(Request request, Response response) {
 
-                System.out.println("foo");
-
-                System.out.println(game.toJson());
-
-
-                int cell = Integer.valueOf(request.queryParams("cell"));
+                Integer cell = Integer.valueOf(request.queryParams("cell"));
+                System.out.println(cell);
                 String p = request.queryParams("player");
+                System.out.println(p);
                 char option = p.charAt(0);
+                System.out.println(option);
 
                 table = game.getTable();
 
@@ -91,7 +89,7 @@ public class TicTacToe
                         return "[{\"Status\":\"player_turn\"}]";
 
                     player.insertIntoTable(cell);
-                    player.setTurn(!player.getTurn());
+                    player.turn();
                 }
                 catch(OutOfBoundsException ex)
                 {
@@ -104,11 +102,18 @@ public class TicTacToe
                 if(game.winningCombinations(player.getInserted()))
                     return "[{\"Status\":\"" + player.getPlayerName() + "\"}]";
 
-                if(game.getTurn() == 1)
-                    game.setTurn(2);
-                else
-                    game.setTurn(1);
-                
+                try
+                {
+                    if(game.getTurn() == 1)
+                        game.setTurn(2);
+                    else
+                        game.setTurn(1);
+                }
+                catch(IllegalTurnException ex)
+                {
+                    return "[{\"Status\":\"turn_error\"}]";
+                }
+
                 counter++;
                 if(counter == 9)
                     return "[{\"Status\":\"draw\"}]";
