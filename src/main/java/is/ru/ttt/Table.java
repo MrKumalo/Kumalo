@@ -31,7 +31,7 @@ public class Table{
 		/*if(input != 'X' || input != 'O')
 		{
 			throw new IllegalPlayerOptionException("Not a valid input");
-		}*/
+		}
 		if(this.table[location] != 'E')
 		{
 			throw new AlreadyOccupiedException("Cell already occupied");
@@ -40,6 +40,7 @@ public class Table{
 		{
 			throw new OutOfBoundsException("Location Out Of Bounds");
 		}
+		*/
 		this.table[location] = input;
 	}
 
