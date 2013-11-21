@@ -38,7 +38,14 @@ public class PlayerTest{
 		assertTrue(player1.getTurn());
 		assertFalse(player2.getTurn());
 	}
-
+	@Test
+	public void defaultConsTest()
+	{
+		Player p1 = new Player();
+		assertEquals(null, p1.getPlayerName());
+		assertEquals(null, p1.getTurn());
+		assertEquals(0, p1.getInserted().size());
+	}
 	@Test
 	public void turnTest()
 	{
