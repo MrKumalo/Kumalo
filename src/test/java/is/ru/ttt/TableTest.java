@@ -29,7 +29,7 @@ public class TableTest {
   		  test[i] = 'E';
   		}
         assertArrayEquals(test,t.getFullTable());
-      }
+    }
 
     @Test
     public void TableInsert() 
