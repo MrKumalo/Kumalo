@@ -7,7 +7,7 @@ package is.ru.ttt;
 import java.util.ArrayList;
 
 /**
- * [lýsing]
+ * The Player class maintains the players.
  *
  * @author arnars12, axelg12, gadidjah12, gunnarsa12, haraldurs12, solberg12  
  * @version 1, 20 November 2013
@@ -21,8 +21,7 @@ public class Player
 	ArrayList<Integer> inserted = new ArrayList<Integer>();
 	
 	/**
-	 * [Player description]
-	 * @return [description]
+	 * The player function is the default constructor for the class. The function initializes the playername and myturn variables.
 	 */
 	public Player()
 	{
@@ -31,10 +30,9 @@ public class Player
 	}
 
 	/**
-	 * [Player description]
-	 * @param  name [description]
-	 * @param  turn [description]
-	 * @return      [description]
+	 * The player function is another constructor which takes in two variables creates a player.
+	 * @param  name Name of the player.
+	 * @param  turn Specifies if it's this players turn to play or not.
 	 */
 	public Player(String name, Boolean turn)
 	{
@@ -43,8 +41,8 @@ public class Player
 	}
 
 	/**
-	 * [getPlayerName description]
-	 * @return [description]
+	 * The getPlayerName function returns the player name.
+	 * @return playername.
 	 */
 	public String getPlayerName()
 	{
@@ -52,8 +50,8 @@ public class Player
 	}
 	
 	/**
-	 * [getTurn description]
-	 * @return [description]
+	 * The getTurn function returns true or false, which indicates if it's the player turn to play.
+	 * @return myturn.
 	 */
 	public Boolean getTurn()
 	{
@@ -61,7 +59,8 @@ public class Player
 	}
 
 	/**
-	 * [turn description]
+	 * 	The turn function updates the turn variable so that the player who just completed his turn will not
+	 *	get another turn until the other player has finished his turn.
 	 */
 	public void turn()
 	{
@@ -69,10 +68,10 @@ public class Player
 	}
 
 	/**
-	 * [insertIntoTable description]
-	 * @param  cell                     [description]
-	 * @throws OutOfBoundsException     [description]
-	 * @throws AlreadyOccupiedException [description]
+	 * The insertIntoTable function inserts a certain cell into an arraylist which maintains the cells for certain player.
+	 * @param  cell                     Specifies a location on the game board.
+	 * @throws OutOfBoundsException     This exception is thrown if the cell location is out of the board range.
+	 * @throws AlreadyOccupiedException This exception is thrown if the cell is already occupied.
 	 */
 	public void insertIntoTable(int cell) throws OutOfBoundsException, AlreadyOccupiedException
 	{
@@ -95,8 +94,8 @@ public class Player
 	}
 
 	/**
-	 * [getInserted description]
-	 * @return [description]
+	 * The getInserted function returns the arraylist.
+	 * @return arraylist.
 	 */
 	public ArrayList<Integer> getInserted()
 	{
@@ -104,8 +103,8 @@ public class Player
 	}
 
 	/**
-	 * [toJson description]
-	 * @return [description]
+	 * The toJson function creates a json string and returns it.
+	 * @return json string.
 	 */
 	public String toJson()
 	{
