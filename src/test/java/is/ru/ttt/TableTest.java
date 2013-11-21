@@ -82,10 +82,6 @@ public class TableTest {
           {
             t.setX('X', i);
           } 
-          else
-          {
-            t.setX('E', i);
-          }
         }
         catch(AlreadyOccupiedException e)
         {
@@ -97,7 +93,7 @@ public class TableTest {
         }
         catch(IllegalPlayerOptionException e)
         {
-            //System.out.println(e);
+            System.out.println(e);
         }
       }
       String jsonTest = "{\"cell0\":\"E\"},{\"cell1\":\"X\"},{\"cell2\":\"E\"},{\"cell3\":\"E\"},{\"cell4\":\"E\"},{\"cell5\":\"E\"},{\"cell6\":\"E\"},{\"cell7\":\"E\"},{\"cell8\":\"E\"}";
@@ -121,10 +117,6 @@ public class TableTest {
           {
             t.setX('O', i);
           }
-          else
-          {
-            t.setX('E', i);
-          }
         }
         catch(AlreadyOccupiedException e)
         {
@@ -136,7 +128,7 @@ public class TableTest {
         }
         catch(IllegalPlayerOptionException e)
         {
-            //System.out.println(e);
+            System.out.println(e);
         }
       }
       String jsonTest = "{\"cell0\":\"E\"},{\"cell1\":\"X\"},{\"cell2\":\"O\"},{\"cell3\":\"E\"},{\"cell4\":\"E\"},{\"cell5\":\"E\"},{\"cell6\":\"E\"},{\"cell7\":\"E\"},{\"cell8\":\"E\"}";
@@ -160,10 +152,6 @@ public class TableTest {
           {
             t.setX('O', i);
           }
-          else
-          {
-            t.setX('E', i);
-          }
         }
         catch(AlreadyOccupiedException e)
         {
@@ -175,7 +163,7 @@ public class TableTest {
         }
         catch(IllegalPlayerOptionException e)
         {
-            //System.out.println(e);
+            System.out.println(e);
         }
 
       }
