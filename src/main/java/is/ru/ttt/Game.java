@@ -60,7 +60,7 @@ public class Game {
 
 	public void setTurn(int turn) throws IllegalTurnException
 	{
-		if(turn != 1 || turn != 2)
+		if(turn != 1 && turn != 2)
 			throw new IllegalTurnException("Turn must be either 1 (Player 1) or 2 (Player 2)");
 
 		this.turn = turn;
