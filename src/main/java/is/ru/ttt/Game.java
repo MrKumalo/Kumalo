@@ -99,9 +99,9 @@ public class Game {
 	{
 		String json = "[";
 		json += table.toJson();
-		json += ",{Player1";
+		json += ",{\"Player1\"";
 		json += p1.toJson();
-		json += ",{Player2";
+		json += ",{\"Player2\"";
 		json += p2.toJson();
 		json += ",{\"turn\":\"" + turn + "\"}";
 		json += "]";

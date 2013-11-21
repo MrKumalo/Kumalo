@@ -86,6 +86,10 @@ public class GameTest
 
 		Player player3 = new Player("p3", true);
 		game.setP1(player3);
+
+		assertEquals(player3, game.getP1());
+		
+
 	}
 
 	@Test
@@ -107,6 +111,8 @@ public class GameTest
 
 		Player player3 = new Player("p3", true);
 		game.setP2(player3);
+
+		assertEquals(player3, game.getP2());
 	}
 
 	@Test
@@ -147,14 +153,15 @@ public class GameTest
 
 		String json = game.toJson();
 
-		String tablejson = "{\"cell0\":\"X\"},{\"cell1\":\"E\"},{\"cell2\":\"O\"},{\"cell3\":\"E\"},{\"cell4\":\"X\"},{\"cell5\":\"O\"},{\"cell6\":\"O\"},{\"cell7\":\"E\"},{\"cell8\":\"X\"}";
-		String p1json = "{\"Player1\":\"Mario\"}";
-		String p2json = "{\"Player2\":\"Dilbert\"}";
+		String tablejson = "{\"cell0\":\"E\"},{\"cell1\":\"E\"},{\"cell2\":\"E\"},{\"cell3\":\"E\"},{\"cell4\":\"E\"},{\"cell5\":\"E\"},{\"cell6\":\"E\"},{\"cell7\":\"E\"},{\"cell8\":\"E\"}";
+		String p1json = ",{\"Player1\":\"Mario\"}";
+		String p2json = ",{\"Player2\":\"Dilbert\"}";
+		String turnjson =  ",{\"turn\":\"1\"}";
 
+		
 
-		System.out.println();
-
-
+		String jsonTest = "[" + tablejson + p1json + p2json + turnjson + "]";
+		assertEquals(game.toJson(), jsonTest);
 
 	}
 }
