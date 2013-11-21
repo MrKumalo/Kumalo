@@ -56,14 +56,24 @@ public class GameTest
 		{
 			System.out.println("setTurnGameTest: OK");
 		}
-
+		try
+		{
+			game.setTurn(2);
+			assertEquals(2, game.getTurn());
+			game.setTable(t);
+			assertEquals(t, game.getTable());
+		}
+		catch(IllegalTurnException e)
+		{
+			System.out.println("setTurnGameTest: OK");
+		}
 		try
 		{
 			game.setTurn(3);
 		}
 		catch(IllegalTurnException e)
 		{
-			System.out.println("status: OK");
+			assertEquals("Turn must be either 1 (Player 1) or 2 (Player 2)", e.getMessage());
 		}
 	}
 
@@ -130,7 +140,7 @@ public class GameTest
 		}
 		catch(IllegalTurnException e)
 		{
-			System.out.println("CreateIllegalTurnGameTest: OK");
+			assertEquals("Turn must be either 1 (Player 1) or 2 (Player 2)", e.getMessage());
 		}
 	}
 
