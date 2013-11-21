@@ -5,6 +5,14 @@ import spark.*;
 
 public class TicTacToe 
 {
+
+    public static Game game;
+
+    public static Table table;
+
+    public static Player player1;
+    public static Player player2;
+
     public static void main(String[] args) {
         staticFileLocation("/public");
         
@@ -16,12 +24,10 @@ public class TicTacToe
                 String p1 = request.queryParams("player1");
                 String p2 = request.queryParams("player2");
                 
-                Player player1 = new Player(p1, true);
-                Player player2 = new Player(p2, false);
+                player1 = new Player(p1, true);
+                player2 = new Player(p2, false);
 
-                Table table = new Table();
-
-                Game game;
+                table = new Table();
 
                 try
                 {
@@ -31,9 +37,59 @@ public class TicTacToe
                 {
                     return "[{\"Status\":\"error\"}]";
                 }
-                System.out.println(game.toJson());
                 return game.toJson();
            }
+        });
+
+        post(new Route("/makemove") {
+            @Override
+            public Object handle(Request request, Response response) {
+
+                int cell = Integer.valueOf(request.queryParams("cell"));
+                String p = request.queryParams("player");
+                char option = p.charAt(0);
+
+                table = game.getTable();
+
+                try
+                {
+                    table.setX(option, cell);
+                }
+                catch(IllegalPlayerOptionException ex)
+                {
+                    return "[{\"Status\":\"error\"}]";
+                }
+                catch(OutOfBoundsException ex)
+                {
+                    return "[{\"Status\":\"error\"}]";
+                }
+                catch(AlreadyOccupiedException ex)
+                {
+                    return "[{\"Status\":\"error\"}]";
+                }
+
+                Player player;
+
+                if(option == 'X')
+                    player = game.getP1();
+                else
+                    player = game.getP2();
+
+                try
+                {
+                    player.insertIntoTable(cell);
+                }
+                catch(OutOfBoundsException ex)
+                {
+                    return "[{\"Status\":\"error\"}]";
+                }
+                catch(AlreadyOccupiedException ex)
+                {
+                    return "[{\"Status\":\"error\"}]";
+                }
+
+                return game.toJson();  
+            }
         });
 
         get(new Route("/getboard") {
@@ -54,4 +110,3 @@ public class TicTacToe
         });
     }
 }
-

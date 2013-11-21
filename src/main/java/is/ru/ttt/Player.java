@@ -4,20 +4,20 @@ import java.util.ArrayList;
 public class Player
 {
 
-	private int turnCount;
 	private String playerName;
 	private Boolean myTurn;
 	ArrayList<Integer> inserted = new ArrayList<Integer>();
 	
 	public Player()
 	{
+		playerName = null;
+		myTurn = null;
 	}
 
 	public Player(String name, Boolean turn)
 	{
 		playerName = name;
 		myTurn = turn;
-		turnCount = 0;
 	}
 	public String getPlayerName()
 	{

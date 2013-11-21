@@ -26,9 +26,10 @@ public class Table{
 		return this.table;
 	}
 
-	public void setX(char input, int location)
+	public void setX(char input, int location) throws IllegalPlayerOptionException, 
+		AlreadyOccupiedException, OutOfBoundsException
 	{
-		/*if(input != 'X' || input != 'O')
+		if(input != 'X' && input != 'O')
 		{
 			throw new IllegalPlayerOptionException("Not a valid input");
 		}
