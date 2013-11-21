@@ -148,14 +148,25 @@ public class GameTest
 		try
 		{
 			game = new Game(player1, player2, t, 1);
-			assertEquals(false, game.winningCombinations(list));
-			//Testa top line
+			assertEquals(false, game.winningCombinations(list));	
+			
+			/*	  x | x	| x
+				-------------
+				   	|   | 
+				-------------
+					|	| 		*/
+			
 			list.add(0);
 			list.add(1);
 			list.add(2);
 			assertEquals(true, game.winningCombinations(list));
 
-			//Testa middle
+			/*	    | 	| 
+				-------------
+				  x	| x | x
+				-------------
+					|	| 		*/
+
 			ArrayList<Integer> middle = new ArrayList<Integer>();
 			assertEquals(false, game.winningCombinations(middle));
 			middle.add(3);
@@ -163,7 +174,12 @@ public class GameTest
 			middle.add(5);
 			assertEquals(true, game.winningCombinations(middle));
 
-			//Testa down line
+			/*	    | 	| 
+				-------------
+				  	|   | 
+				-------------
+				  x	| x	| x 	*/
+
 			ArrayList<Integer> lowest = new ArrayList<Integer>();
 			assertEquals(false, game.winningCombinations(lowest));
 			lowest.add(8);
@@ -172,7 +188,12 @@ public class GameTest
 			assertEquals(true, game.winningCombinations(lowest));
 
 
-			//Testa left side
+			/*	  x | 	| 
+				-------------
+				  x	|   |  
+				-------------
+				  x	|	| 		*/
+
 			ArrayList<Integer> left = new ArrayList<Integer>();
 			assertEquals(false, game.winningCombinations(left));
 			left.add(0);
@@ -180,7 +201,27 @@ public class GameTest
 			left.add(3);
 			assertEquals(true, game.winningCombinations(left));
 
-			//testing right side
+			
+			/*	    | x	| 
+				-------------
+				  	| x |  
+				-------------
+				  	| x	| 		*/
+
+			ArrayList<Integer> center = new ArrayList<Integer>();
+			assertEquals(false, game.winningCombinations(center));
+			center.add(1);
+			center.add(4);
+			center.add(7);
+			assertEquals(true, game.winningCombinations(center));
+
+
+			/*	    | 	| x
+				-------------
+				  	|   | x
+				-------------
+					|	| x 	*/
+
 			ArrayList<Integer> right = new ArrayList<Integer>();
 			assertEquals(false, game.winningCombinations(right));
 			right.add(8);
@@ -189,7 +230,12 @@ public class GameTest
 			assertEquals(true, game.winningCombinations(right));
 
 
-			//Testing ska byrja efst vinstri
+			/*	  x | 	| 
+				-------------
+				  	| x |  
+				-------------
+				  	|	| x		*/
+
 			ArrayList<Integer> diagonal1 = new ArrayList<Integer>();
 			assertEquals(false, game.winningCombinations(diagonal1));
 			diagonal1.add(0);
@@ -198,7 +244,12 @@ public class GameTest
 			assertEquals(true, game.winningCombinations(diagonal1));
 
 
-			//Testing ska byrja efst hægri
+			/*	    | 	| x
+				-------------
+				  	| x |  
+				-------------
+				  x	|	| 		*/
+
 			ArrayList<Integer> diagonal2 = new ArrayList<Integer>();
 			assertEquals(false, game.winningCombinations(diagonal2));
 			diagonal2.add(6);
