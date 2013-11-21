@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tic Tac Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="ttt.js" type="javascript"></script>
+    
+    <!-- load bootstrap for nicer ui -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+
+    <div class="container">
+    <div id="playernames">
+      <h4 id="p1"></h4>
+      <h4 id="p2"></h4>
+    </div>
+      <h2>Tic Tac Toe</h2>
+      <table id="board" class="table">
+        <tr>
+          <td id="cell0"></td>
+          <td id="cell1"></td>
+          <td id="cell2"></td>
+        </tr>
+        <tr>
+          <td id="cell3"></td>
+          <td id="cell4"></td>
+          <td id="cell5"></td>
+        </tr>
+        <tr>
+          <td id="cell6"></td>
+          <td id="cell7"></td>
+          <td id="cell8"></td>
+        </tr>
+      </table>
+      <div id="results"></div>
+    </div>
+
+    <div id="lobby">
+        <div class="form-group">
+          <input type="text" class="form-control" name="player1" id="player1" value="Arnar" placeholder="Player 1">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="player2" id="player2" value="Sóli" placeholder="Player 2">
+        </div>
+        <button type="submit" onclick="javascript:return addPlayers()" class="btn btn-default">Play game</button>
+    </div>
+
+    <!-- load jquery -->
+
+    <!-- use ajax to submit form, retreive the result and display on the page -->
+  </body>
+
+  <script>
+  $(document).ready(function () {
+    $('.container').hide();
+    $('#lobby').show();
+
+    $('#board td').click(function(event) {
+      var id = $(this).attr('id');
+      if(!$(this).hasClass('used'))
+      {
+        $(this).addClass('used');
+        $(this).append('<p>X</p>');
+      }
+
+      console.log(id);
+    });
+  });
+
+ /*
+  function getboard() {
+    $.ajax({
+        type: "GET",
+        url: "/getboard",
+        dataType:"json",
+        success:function(data){
+            for(var i=0; i< data.length; i++)
+            {
+              if(data[i]["cell" + i] != "E")
+              {
+                $('#cell' + i).html('<p>' + data[i]["cell" + i] + '</p>');
+              } 
+            }
+        },
+        error: function (xhr, err) {
+        console.log("readyState: " + xhr.readyState + "\nstatus: " + xhr.status);
+        console.log("responseText: " + xhr.responseText);
+        }
+    });
+  }
+  */
+/*
+  form.submit(function(e) {
+        var a = $("#player1").val();
+        var b = $("#player2").val();
+        $.ajax({
+          type: form.attr('method'),
+          url: form.attr('action'),
+          data: 'player1=' + a + '&player2=' + b
+        }).done(function(sum) {
+          getPlayerNames();
+        }).fail(function() {
+          $('#lobby').html("<h1>You my friend fucked up really badly</h1>");
+        });
+        e.preventDefault();
+      });
+*/
+
+function addPlayers() {
+    var player1 = $("#player1").val();
+    var player2 = $("#player2").val();
+
+    console.log(player1 + ":" + player2);
+    $.ajax({
+        type: "POST",
+        url: "/players",
+        data: 'player1=' + player1 + '&player2=' + player2
+      }).done(function(data) {
+          
+          $('#lobby').hide();
+          $('.container').show();
+          
+          for(var i = 0; i < data.length; i++)
+          {
+            $('#p' + (i + 1)).append(data[i]["p" + i]);
+          }
+
+
+      }).fail(function() {
+          console.log("foo");
+      });    
+    return false;
+}
+
+  </script>
+</html>
