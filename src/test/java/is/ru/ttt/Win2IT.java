@@ -41,12 +41,19 @@ public class Win2IT {
 		}
 
 		assertEquals("O: Halli", selenium.getText("css=#p2 > p"));
+		Thread.sleep(1000);
 		selenium.click("id=cell2");
+		Thread.sleep(1000);
 		selenium.click("id=cell0");
+		Thread.sleep(1000);
 		selenium.click("id=cell1");
+		Thread.sleep(1000);
 		selenium.click("id=cell3");
+		Thread.sleep(1000);
 		selenium.click("id=cell4");
+		Thread.sleep(1000);
 		selenium.click("id=cell6");
+		Thread.sleep(1000);
 		for (int second = 0;; second++) {
 			if (second >= 60) fail("timeout");
 			try { if ("Halli has won!!".equals(selenium.getText("css=#playernames > p"))) break; } catch (Exception e) {}
