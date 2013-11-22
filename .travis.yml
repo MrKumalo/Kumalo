@@ -2,14 +2,15 @@ language: java
 jdk: openjdk7
 env:
   global:
-  - secure: W/5TwUFq8vETHLOtn01NviiGluhLT8no9HXAzHz2vDbV5jdqCHd0HaZ2miJreuPxGnJnXx3i0NEzfx9sRsB8g9MxP9FxR7H3iulsZkf9g6mPWwnlzlTPl449NhtDvx60RjEOKHg2JykNjBeCYSJgxE/tlO0ZUftewH6l9cWOYFI=
   - secure: SqIiXAMJqyZRd68jmAuCWZ/MJliOJN3FfY1wejwLdIraYncC6FNJCKcqhMykNecftQxMvYruGMl036URMIQ3Cb1FDpKRt+8ne0QIR5JCEwNZd9s+255L/k3MOScOr4EPCWMM8lHw6AXzZ7G6+8cgyPRxEiODEOHg7DaPsvZMjts=
+  - secure: W/5TwUFq8vETHLOtn01NviiGluhLT8no9HXAzHz2vDbV5jdqCHd0HaZ2miJreuPxGnJnXx3i0NEzfx9sRsB8g9MxP9FxR7H3iulsZkf9g6mPWwnlzlTPl449NhtDvx60RjEOKHg2JykNjBeCYSJgxE/tlO0ZUftewH6l9cWOYFI=
 
 deploy:
   provider: heroku
   api_key:
      secure: SqIiXAMJqyZRd68jmAuCWZ/MJliOJN3FfY1wejwLdIraYncC6FNJCKcqhMykNecftQxMvYruGMl036URMIQ3Cb1FDpKRt+8ne0QIR5JCEwNZd9s+255L/k3MOScOr4EPCWMM8lHw6AXzZ7G6+8cgyPRxEiODEOHg7DaPsvZMjts=
-  app: mrkumalo
+  app: 
+     master: mrkumalo
   on:
     repo: MrKumalo/Kumalo
 
@@ -17,18 +18,18 @@ before_install:
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - git remote add heroku git@heroku.com:kumalostaging.git
 - echo "Host heroku.com" >> ~/.ssh/config
-- echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-- echo "   CheckHostIP no" >> ~/.ssh/config
-- echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-- heroku keys:clear
+- echo " StrictHostKeyChecking no" >> ~/.ssh/config
+- echo " CheckHostIP no" >> ~/.ssh/config
+- echo " UserKnownHostsFile=/dev/null" >> ~/.ssh/config
 - yes | heroku keys:add
-- yes | git push heroku master
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-- /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
-  --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
+- yes | git push -f heroku master
+- "export DISPLAY=:99.0"
+- "sh -e /etc/init.d/xvfb start"
+- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
+  --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 install:
 - gem install selenium-webdriver
+
 script: 
 before_deploy:
 - sh bin/before_deploy
