@@ -1,5 +1,5 @@
-/*
-* @(#)TicTacToe.java 1, 18 Nov 2013
+/**
+ * @(#)TicTacToe.java 1, 18 Nov 2013
  *
  * Copyright (c) arnars12, axelg12, gadidjah12, gunnarsa12, haraldurs12, solberg12 
  */
@@ -8,6 +8,14 @@ package is.ru.ttt;
 
 import static spark.Spark.*;
 import spark.*;
+
+
+/**
+ * The TicTacToe class runs the game.
+ *
+ * @author arnars12, axelg12, gadidjah12, gunnarsa12, haraldurs12, solberg12  
+ * @version 1, 20 November 2013
+ */
 
 public class TicTacToe 
 {
@@ -21,11 +29,20 @@ public class TicTacToe
 
     public static int counter = 0;
 
+    /**
+     * This main function essentially runs the game.
+     * @param args argument
+     */
     public static void main(String[] args) {
         staticFileLocation("/public");
         
         setPort(Integer.valueOf(System.getenv("PORT")));
 
+        /**
+         * This post function defines the info that is posted to /player 
+         * @param  "/players" url to post the info on players.
+         * @return            json string.
+         */
         post(new Route("/players") {
             @Override
             public Object handle(Request request, Response response) {
@@ -52,6 +69,11 @@ public class TicTacToe
            }
         });
 
+        /**
+         * This post function defines the info when a cell is clicked.
+         * @param  "/makemove" url to post info on cell.
+         * @return             json string.
+         */
         post(new Route("/makemove") {
             @Override
             public Object handle(Request request, Response response) {
@@ -139,14 +161,6 @@ public class TicTacToe
                 }
 
                 return game.toJson();  
-            }
-        });
-
-        get(new Route("/getboard") {
-            @Override
-            public Object handle(Request request, Response response) {
-                Table table = new Table();
-                return table.toJson();
             }
         });
     }
