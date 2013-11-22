@@ -9,6 +9,14 @@ package is.ru.ttt;
 import static spark.Spark.*;
 import spark.*;
 
+
+/**
+ * The Table class maintains the game-board.
+ *
+ * @author arnars12, axelg12, gadidjah12, gunnarsa12, haraldurs12, solberg12  
+ * @version 1, 20 November 2013
+ */
+
 public class TicTacToe 
 {
 
@@ -21,11 +29,20 @@ public class TicTacToe
 
     public static int counter = 0;
 
+    /**
+     * [main description]
+     * @param args [description]
+     */
     public static void main(String[] args) {
         staticFileLocation("/public");
         
         setPort(Integer.valueOf(System.getenv("PORT")));
 
+        /**
+         * [Route description]
+         * @param  "/players" [description]
+         * @return            [description]
+         */
         post(new Route("/players") {
             @Override
             public Object handle(Request request, Response response) {
@@ -52,6 +69,11 @@ public class TicTacToe
            }
         });
 
+        /**
+         * [Route description]
+         * @param  "/makemove" [description]
+         * @return             [description]
+         */
         post(new Route("/makemove") {
             @Override
             public Object handle(Request request, Response response) {
@@ -142,6 +164,11 @@ public class TicTacToe
             }
         });
 
+        /**
+         * [Route description]
+         * @param  "/getboard" [description]
+         * @return             [description]
+         */
         get(new Route("/getboard") {
             @Override
             public Object handle(Request request, Response response) {

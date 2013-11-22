@@ -1,3 +1,8 @@
+body
+{
+	margin: 10px;
+}
+
 #board {
 	border: 1px solid black;
 	border-collapse: separate;
@@ -22,8 +27,18 @@
 {
 	padding-left: 5px;
 }
-
 .red
 {
 	color: #ff0000;
+}
+
+#player1, #player2
+{
+	width: 250px;
+	margin-left: 30px;
+}
+
+#lobby button
+{
+	margin-left: 30px;
 }
