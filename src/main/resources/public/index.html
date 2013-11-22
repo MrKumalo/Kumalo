@@ -34,13 +34,13 @@
         </tr>
       </table>
       <div id="playernames">
-        <div id="p1"><span id="p1turn"></span></div>
-        <div id="p2"><span id="p2turn"></span></div>
+        <div id="p1"></div><span id="p1turn"></span>
+        <div id="p2"></div><span id="p2turn"></span>
      </div>
 
       <div id="results"></div>
     </div>
-
+    <input type="hidden" id="turn" value="1">
     <div id="lobby">
         <div class="form-group">
           <input type="text" class="form-control" name="player1" id="player1" value="Arnar" placeholder="Player 1">
@@ -63,60 +63,73 @@
   });
   
     $('#board td').click(function(event) {
-      var id = $(this).attr('id');
+      var id = $(this).attr('id').substring(4,5);
+
       if(!$(this).hasClass('used'))
       {
+
+        console.log("turn:" + $('#turn').val());
+
         var turn;
-        if($('#p2turn').val() == '') 
+        if($('#turn').val() == '1') 
         {
+            console.log("foo");
+            $('#p1turn').empty();
+            $('#p2turn').html('<p>your turn!</p>');
+            $('#turn').val('2');
             turn = 'X';
         }
         else
         {
+            console.log("bar");
+            $('#p1turn').html('<p>your turn!</p>');
+            $('#p2turn').empty();
             turn = 'O';
+            $('#turn').val('1');
         }
 
-        console.log("YOLO");
+        onclick(id, turn);
 
-        $.ajax({
-            type: "POST",
-            url: "/makemove",
-            data: 'cell=' + id + '&player=' + turn,
-            success: function (data) {
-              
-              console.log(data);
-
-              if(turn == 'X')
-              {
-                 $('#p2turn').html('<p>your turn!</p>');
-                  $('#p1turn').empty();
-              }
-              else
-              {
-                 $('#p1turn').empty();
-                  $('#p2turn').html('<p>your turn!</p>');
-              }
-
-
-              $(this).addClass('used');
-              $(this).append('<p>' + turn + '</p>');
-
-              
-            },
-            dataType: "json"
-        });
-
-        alert("YOLO");
+        $(this).addClass('used') 
 
       }
     });
+
+
+function onclick(id, turn) {
+    $.ajax({
+      type: "POST",
+      url: "/makemove",
+      data: "cell=" + id + "&player=" + turn,
+      success: function (data) {
+          
+            console.log(data);
+            
+            if(data.length == 1)
+            {
+              $('#playernames').empty();
+              $('#playernames').html("<p>" + data[0]['Status'] + " has won!!</p>");
+
+              for(var i=0; i <9; i++)
+              {
+                  $('#cell' + i).addClass('used') 
+              }
+
+            }
+
+            $('#cell' + id).html("<p>" + turn + "</p>");
+        },
+        dataType: "json"
+    });
+    return false;
+}
+
 
 
 function addPlayers() {
     var player1 = $("#player1").val();
     var player2 = $("#player2").val();
 
-    console.log(player1 + ":" + player2);
     $.ajax({
         type: "POST",
         url: "/players",
@@ -127,12 +140,10 @@ function addPlayers() {
           $('#p2').html('<p>O: ' + data[10]['Player2'] + '</p>');
 
 
-          $('#p2turn').html('<p>your turn!</p>');
+          $('#p1turn').html('<p>your turn!</p>');
 
           $('#lobby').hide();
           $('.container').show();
-          
-          console.log(data);
         },
         dataType: "json"
     });
