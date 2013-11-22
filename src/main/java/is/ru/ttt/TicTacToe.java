@@ -50,10 +50,21 @@ public class TicTacToe
             @Override
             public Object handle(Request request, Response response) {
 
+<<<<<<< HEAD
                 Integer cell =  Integer.valueOf(request.queryParams("cell"));
+=======
+                Integer cell = Integer.valueOf(request.queryParams("cell"));
+                System.out.println(cell);
+>>>>>>> fc0c05c89e80ea275f476761ea575c59041a8af6
                 String p = request.queryParams("player");
+                System.out.println(p);
                 char option = p.charAt(0);
+<<<<<<< HEAD
                 
+=======
+                System.out.println(option);
+
+>>>>>>> fc0c05c89e80ea275f476761ea575c59041a8af6
                 table = game.getTable();
 
                 try
@@ -81,6 +92,7 @@ public class TicTacToe
                     if(!player1.getTurn() && !player2.getTurn())
                         return "[{\"Status\":\"player_turn\"}]";
 
+<<<<<<< HEAD
                     if(option == 'X')
                     {
                         game.setTurn(2);
@@ -96,6 +108,10 @@ public class TicTacToe
                     player2.turn();
 
 
+=======
+                    player.insertIntoTable(cell);
+                    player.turn();
+>>>>>>> fc0c05c89e80ea275f476761ea575c59041a8af6
                 }
                 catch(OutOfBoundsException ex)
                 {
@@ -113,6 +129,18 @@ public class TicTacToe
                     return "[{\"Status\":\"" + player1.getPlayerName() + "\"}]";
                 if(game.winningCombinations(player2.getInserted()))
                     return "[{\"Status\":\"" + player2.getPlayerName() + "\"}]";
+
+                try
+                {
+                    if(game.getTurn() == 1)
+                        game.setTurn(2);
+                    else
+                        game.setTurn(1);
+                }
+                catch(IllegalTurnException ex)
+                {
+                    return "[{\"Status\":\"turn_error\"}]";
+                }
 
                 counter++;
                 if(counter == 9)
