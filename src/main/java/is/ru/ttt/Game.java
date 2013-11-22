@@ -18,9 +18,11 @@ public class Game {
 	private Player p2;
 	private Table table;
 	private int turn;
+	private int turnCounter;
 
 	public Game(Player p1, Player p2, Table table, int turn) throws IllegalTurnException
 	{
+		turnCounter = 0;
 		this.p1 = p1;
 		this.p2 = p2;
 		this.table = table;
@@ -37,7 +39,10 @@ public class Game {
 		table = null;
 		turn = -1;
 	}
-
+	public int getTurnCounter()
+	{
+		return turnCounter;
+	}
 	public Player getP1()
 	{
 		return this.p1;
@@ -47,7 +52,10 @@ public class Game {
 	{
 		return this.p2;
 	}
-
+	public void addCounter()
+	{
+		turnCounter++;
+	}
 	public Table getTable()
 	{
 		return this.table;
