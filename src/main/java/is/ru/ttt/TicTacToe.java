@@ -50,21 +50,13 @@ public class TicTacToe
             @Override
             public Object handle(Request request, Response response) {
 
-<<<<<<< HEAD
-                Integer cell =  Integer.valueOf(request.queryParams("cell"));
-=======
                 Integer cell = Integer.valueOf(request.queryParams("cell"));
                 System.out.println(cell);
->>>>>>> fc0c05c89e80ea275f476761ea575c59041a8af6
+
                 String p = request.queryParams("player");
                 System.out.println(p);
                 char option = p.charAt(0);
-<<<<<<< HEAD
-                
-=======
-                System.out.println(option);
 
->>>>>>> fc0c05c89e80ea275f476761ea575c59041a8af6
                 table = game.getTable();
 
                 try
@@ -92,7 +84,7 @@ public class TicTacToe
                     if(!player1.getTurn() && !player2.getTurn())
                         return "[{\"Status\":\"player_turn\"}]";
 
-<<<<<<< HEAD
+
                     if(option == 'X')
                     {
                         game.setTurn(2);
@@ -107,11 +99,6 @@ public class TicTacToe
                     player1.turn();
                     player2.turn();
 
-
-=======
-                    player.insertIntoTable(cell);
-                    player.turn();
->>>>>>> fc0c05c89e80ea275f476761ea575c59041a8af6
                 }
                 catch(OutOfBoundsException ex)
                 {
