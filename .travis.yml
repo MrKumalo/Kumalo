@@ -2,14 +2,15 @@ language: java
 jdk: openjdk7
 deploy:
   provider: heroku
-  api_key: 
+  api_key:
     secure: W/5TwUFq8vETHLOtn01NviiGluhLT8no9HXAzHz2vDbV5jdqCHd0HaZ2miJreuPxGnJnXx3i0NEzfx9sRsB8g9MxP9FxR7H3iulsZkf9g6mPWwnlzlTPl449NhtDvx60RjEOKHg2JykNjBeCYSJgxE/tlO0ZUftewH6l9cWOYFI=
   app: mrkumalo
   on:
     repo: MrKumalo/Kumalo
 env:
   global:
-    secure: W/5TwUFq8vETHLOtn01NviiGluhLT8no9HXAzHz2vDbV5jdqCHd0HaZ2miJreuPxGnJnXx3i0NEzfx9sRsB8g9MxP9FxR7H3iulsZkf9g6mPWwnlzlTPl449NhtDvx60RjEOKHg2JykNjBeCYSJgxE/tlO0ZUftewH6l9cWOYFI=
+  - secure: W/5TwUFq8vETHLOtn01NviiGluhLT8no9HXAzHz2vDbV5jdqCHd0HaZ2miJreuPxGnJnXx3i0NEzfx9sRsB8g9MxP9FxR7H3iulsZkf9g6mPWwnlzlTPl449NhtDvx60RjEOKHg2JykNjBeCYSJgxE/tlO0ZUftewH6l9cWOYFI=
+  - secure: VBuxBtjGQkh1kaQw2upcZYu5XbR9nfS338pkIF++XOZAkLBBLy3qxhfnNDIiYpF8PzArN5fLie7oXwdHhu4viDDmEKI5SeN3VgeQgTFKWwX8NVUEKrpDWdACh5TCHMIFmS9Sy+MzxIlCfIut26Lx+4dhfNSckCn3iqDDb2PcWms=
 after_success:
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - git remote add heroku git@heroku.com:kumalostaging.git
