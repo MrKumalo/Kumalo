@@ -27,15 +27,25 @@ public class DrawIT {
 		selenium.type("id=player1", "Axel");
 		selenium.type("id=player2", "Halli");
 		selenium.click("css=#lobby > button.btn.btn-default");
+			Thread.sleep(1000);
 		selenium.click("id=cell2");
+			Thread.sleep(1000);
 		selenium.click("id=cell8");
+			Thread.sleep(1000);
 		selenium.click("id=cell0");
+			Thread.sleep(1000);
 		selenium.click("id=cell1");
+			Thread.sleep(1000);
 		selenium.click("id=cell5");
+			Thread.sleep(1000);
 		selenium.click("id=cell3");
+			Thread.sleep(1000);
 		selenium.click("id=cell4");
+			Thread.sleep(1000);
 		selenium.click("id=cell6");
+			Thread.sleep(1000);
 		selenium.click("id=cell7");
+			Thread.sleep(1000);
 		for (int second = 0;; second++) {
 			if (second >= 60) fail("timeout");
 			try { if ("draw has won!!".equals(selenium.getText("css=#playernames > p"))) break; } catch (Exception e) {}

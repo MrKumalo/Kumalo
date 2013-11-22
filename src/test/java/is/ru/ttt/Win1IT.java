@@ -27,11 +27,17 @@ public class Win1IT {
 		selenium.type("id=player1", "Axel");
 		selenium.type("id=player2", "Halli");
 		selenium.click("css=#lobby > button.btn.btn-default");
+			Thread.sleep(1000);
 		selenium.click("id=cell0");
+			Thread.sleep(1000);
 		selenium.click("id=cell8");
+			Thread.sleep(1000);
 		selenium.click("id=cell3");
+			Thread.sleep(1000);
 		selenium.click("id=cell2");
+			Thread.sleep(1000);
 		selenium.click("id=cell6");
+			Thread.sleep(1000);
 		assertEquals("Tic Tac Toe", selenium.getTitle());
 		for (int second = 0;; second++) {
 			if (second >= 60) fail("timeout");
