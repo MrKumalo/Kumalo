@@ -13,22 +13,7 @@ deploy:
     master: mrkumalo
   on:
     repo: MrKumalo/Kumalo
-
-0 notes on commit f56ff3a Show line notes below
-
-    Write
-    Preview
-
-Comments are parsed with GitHub Flavored Markdown
-
-Attach images by dragging & dropping or selecting them.
-Commit_comment_tip
-
-Tip: You can also add notes to lines in a file. Hover to the left of a line to make a note
-
-You are receiving notifications because you are watching this repository.
-
-
+    
 before_install:
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - git remote add heroku git@heroku.com:kumalostaging.git
