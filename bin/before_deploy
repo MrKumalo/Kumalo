@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export STAGING_SERVER='http://kumalostaging.herokuapp.com/'
+mvn test-compile failsafe:integration-test failsafe:verify
