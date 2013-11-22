@@ -39,8 +39,11 @@
      </div>
 
       <div id="results"></div>
+
+          <input type="hidden" id="turn" value="1">
+          <button type="submit" id="playagain" onclick="javascript:return newGame()" class="btn btn-default">Play again</button>
     </div>
-    <input type="hidden" id="turn" value="1">
+
     <div id="lobby">
         <div class="form-group">
           <input type="text" class="form-control" name="player1" id="player1" value="Arnar" placeholder="Player 1">
@@ -93,6 +96,12 @@
 });
 
 
+function newGame(){
+  location.reload();
+}
+
+
+
 function onclick(id, turn) {
     $.ajax({
       type: "POST",
@@ -106,6 +115,7 @@ function onclick(id, turn) {
             {
               $('#playernames').empty();
               $('#playernames').html("<p>" + data[0]['Status'] + " has won!!</p>");
+              $('#playagain').show();
 
               for(var i=0; i <9; i++)
               {
@@ -129,7 +139,7 @@ function addPlayers() {
 
     $.ajax({
         type: "POST",
-        url: "/players",
+        url: "/players/ + ",
         data: 'player1=' + player1 + '&player2=' + player2,
         success: function (data) {
           
@@ -140,6 +150,7 @@ function addPlayers() {
           $('#p1turn').html('<p>your turn!</p>');
 
           $('#lobby').hide();
+          $('#playagain').hide();
           $('.container').show();
         },
         dataType: "json"

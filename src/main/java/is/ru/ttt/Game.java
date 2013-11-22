@@ -8,7 +8,7 @@ package is.ru.ttt;
 import java.util.ArrayList;
 
 /**
- * [lýsing]
+ * The Game class maintains the game, players and table.
  *
  * @author arnars12, axelg12, gadidjah12, gunnarsa12, haraldurs12, solberg12  
  * @version 1, 20 November 2013
@@ -19,6 +19,16 @@ public class Game {
 	private Table table;
 	private int turn;
 	private int turnCounter;
+
+	/**
+	 *	
+	 *
+	 * @param	p1 						Intance of player.
+ 	 * @param	p2 						Intance of player.
+	 * @param	table 					Intance of table.
+	 * @param	turn 					Indicates which player can play.
+	 * @throws	IllegalTurnException	This exception is thrown if turn is not 1 or 2.
+	 */
 
 	public Game(Player p1, Player p2, Table table, int turn) throws IllegalTurnException
 	{
