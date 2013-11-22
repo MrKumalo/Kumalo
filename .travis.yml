@@ -2,18 +2,15 @@ language: java
 jdk: openjdk7
 env:
   global:
-    secure: SqIiXAMJqyZRd68jmAuCWZ/MJliOJN3FfY1wejwLdIraYncC6FNJCKcqhMykNecftQxMvYruGMl036URMIQ3Cb1FDpKRt+8ne0QIR5JCEwNZd9s+255L/k3MOScOr4EPCWMM8lHw6AXzZ7G6+8cgyPRxEiODEOHg7DaPsvZMjts=
-    secure: A3c+xp2wRWejKiT+afCDsC2q/rVxT3LZ5gscR0itFQRAnqJvc0ccK1Cr4lRNdesXkRWbm8+/89TkivY7LAAbpTt/cAwgr72B8LUh9PxyfSjJ+/YZmMS6hDzvvK4LCbBHv+ibgazuuyQ0cbvBGG9At8i7HFiVInjTetKuZgKI4Ts=
-
+    secure: QhqLPRXfXygpZ28tmXHYQFGMw6FWiFVsJakwM8ycuWG7z+Tx/Mh+cMlMuSoKdviX3evPrdGlux+bwz1UmHnSM8gpMVoTDdynFUuErw9RKWXITW7+GUMdYwXXD9RpHPahkZPzZq8CR+gmpB5ksvDkuHCGlfaGdRW0/qewOkZw7QI=
 deploy:
   provider: heroku
-  api_key: d1a12cf8-b3df-49bf-be45-d5be3c33ff8b
-    secure: SqIiXAMJqyZRd68jmAuCWZ/MJliOJN3FfY1wejwLdIraYncC6FNJCKcqhMykNecftQxMvYruGMl036URMIQ3Cb1FDpKRt+8ne0QIR5JCEwNZd9s+255L/k3MOScOr4EPCWMM8lHw6AXzZ7G6+8cgyPRxEiODEOHg7DaPsvZMjts=
-  app: 
-    master: mrkumalo
+  api_key:
+    secure: QhqLPRXfXygpZ28tmXHYQFGMw6FWiFVsJakwM8ycuWG7z+Tx/Mh+cMlMuSoKdviX3evPrdGlux+bwz1UmHnSM8gpMVoTDdynFUuErw9RKWXITW7+GUMdYwXXD9RpHPahkZPzZq8CR+gmpB5ksvDkuHCGlfaGdRW0/qewOkZw7QI=
+  app: mrkumalo
   on:
     repo: MrKumalo/Kumalo
-    
+
 before_install:
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - git remote add heroku git@heroku.com:kumalostaging.git
@@ -29,7 +26,6 @@ before_install:
   --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 install:
 - gem install selenium-webdriver
-
 script: 
 before_deploy:
 - sh bin/before_deploy
