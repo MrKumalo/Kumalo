@@ -126,7 +126,7 @@ public class Game {
 		json += p1.toJson();
 		json += ",{\"Player2\"";
 		json += p2.toJson();
-		json += ",{\"turn\":\"" + turn + "\"}";
+		json += ",{\"turn\":" + turn + "}";
 		json += "]";
 
 		return json;

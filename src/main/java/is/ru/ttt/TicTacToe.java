@@ -13,6 +13,8 @@ public class TicTacToe
     public static Player player1;
     public static Player player2;
 
+    public static int counter = 0;
+
     public static void main(String[] args) {
         staticFileLocation("/public");
         
@@ -48,8 +50,11 @@ public class TicTacToe
             @Override
             public Object handle(Request request, Response response) {
 
-                int cell = Integer.valueOf(request.queryParams("cell"));
+                Integer cell = Integer.valueOf(request.queryParams("cell"));
+                System.out.println(cell);
+
                 String p = request.queryParams("player");
+                System.out.println(p);
                 char option = p.charAt(0);
 
                 table = game.getTable();
@@ -71,19 +76,29 @@ public class TicTacToe
                     return "[{\"Status\":\"occupied_error\"}]";
                 }
 
-                Player player;
-
-                if(option == 'X')
-                    player = game.getP1();
-                else
-                    player = game.getP2();
+                Player player1 = game.getP1();
+                Player player2 = game.getP2();
 
                 try
                 {
-                    if(!player.getTurn())
+                    if(!player1.getTurn() && !player2.getTurn())
                         return "[{\"Status\":\"player_turn\"}]";
 
-                    player.insertIntoTable(cell);
+
+                    if(option == 'X')
+                    {
+                        game.setTurn(2);
+                        player1.insertIntoTable(cell);
+                    }
+                    else
+                    {
+                         game.setTurn(1);
+                         player2.insertIntoTable(cell);
+                    }
+                    
+                    player1.turn();
+                    player2.turn();
+
                 }
                 catch(OutOfBoundsException ex)
                 {
@@ -93,9 +108,35 @@ public class TicTacToe
                 {
                     return "[{\"Status\":\"occupied_error\"}]";
                 }
+                catch(IllegalTurnException ex)
+                {
+                    return "[{\"Status\":\"illegalturn_error\"}]";
+                }
+                if(game.winningCombinations(player1.getInserted()))
+                    return "[{\"Status\":\"" + player1.getPlayerName() + "\"}]";
+                if(game.winningCombinations(player2.getInserted()))
+                    return "[{\"Status\":\"" + player2.getPlayerName() + "\"}]";
 
-                if(game.winningCombinations(player.getInserted()))
-                    return "[{\"Status\":\"" + player.getPlayerName() + "\"}]";
+                try
+                {
+                    if(game.getTurn() == 1)
+                        game.setTurn(2);
+                    else
+                        game.setTurn(1);
+                }
+                catch(IllegalTurnException ex)
+                {
+                    return "[{\"Status\":\"turn_error\"}]";
+                }
+
+                counter++;
+                if(counter == 9)
+                {
+                    counter = 0;
+                    return "[{\"Status\":\"draw\"}]";
+                }
+
+                System.out.println(counter);
 
                 return game.toJson();  
             }
