@@ -2,7 +2,8 @@ language: java
 jdk: openjdk7
 env:
   global:
-    secure: QhqLPRXfXygpZ28tmXHYQFGMw6FWiFVsJakwM8ycuWG7z+Tx/Mh+cMlMuSoKdviX3evPrdGlux+bwz1UmHnSM8gpMVoTDdynFUuErw9RKWXITW7+GUMdYwXXD9RpHPahkZPzZq8CR+gmpB5ksvDkuHCGlfaGdRW0/qewOkZw7QI=
+  - secure: QhqLPRXfXygpZ28tmXHYQFGMw6FWiFVsJakwM8ycuWG7z+Tx/Mh+cMlMuSoKdviX3evPrdGlux+bwz1UmHnSM8gpMVoTDdynFUuErw9RKWXITW7+GUMdYwXXD9RpHPahkZPzZq8CR+gmpB5ksvDkuHCGlfaGdRW0/qewOkZw7QI=
+  - secure: i0fLxvPx8qt/79oawOkNqQlIMtqPVzwudy/cPsw5KScWw9YdSrlaj2iR3LvpbhjtIluckjFiqMi0OFCzK3zWX5JrtaW3k8hZc0mRJtcFk0Ku74+m7O+BHy9iBAdXI2JBktGYOvdKclSDbGZnBEn0eJwWXjkIL/cdw7iBE7wnDnI=
 deploy:
   provider: heroku
   api_key:
@@ -10,7 +11,6 @@ deploy:
   app: mrkumalo
   on:
     repo: MrKumalo/Kumalo
-
 before_install:
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - git remote add heroku git@heroku.com:kumalostaging.git
@@ -20,10 +20,10 @@ before_install:
 - echo " UserKnownHostsFile=/dev/null" >> ~/.ssh/config
 - yes | heroku keys:add
 - yes | git push -f heroku master
-- "export DISPLAY=:99.0"
-- "sh -e /etc/init.d/xvfb start"
-- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
-  --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
+  --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
 install:
 - gem install selenium-webdriver
 script: 
