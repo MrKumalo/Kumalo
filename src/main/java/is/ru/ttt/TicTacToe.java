@@ -1,5 +1,5 @@
-/**
- * @(#)OutOfBoundsException.java 1, 18 Nov 2013
+/*
+* @(#)TicTacToe.java 1, 18 Nov 2013
  *
  * Copyright (c) arnars12, axelg12, gadidjah12, gunnarsa12, haraldurs12, solberg12 
  */
@@ -57,10 +57,7 @@ public class TicTacToe
             public Object handle(Request request, Response response) {
 
                 Integer cell = Integer.valueOf(request.queryParams("cell"));
-                System.out.println(cell);
-
                 String p = request.queryParams("player");
-                System.out.println(p);
                 char option = p.charAt(0);
 
                 table = game.getTable();
@@ -121,9 +118,9 @@ public class TicTacToe
                     return "[{\"Status\":\"illegalturn_error\"}]";
                 }
                 if(game.winningCombinations(player1.getInserted()))
-                    return "[{\"Status\":\"" + player1.getPlayerName() + "\"}]";
+                    return "[{\"Status\":\"winner\"},{\"player\":\"" + player1.getPlayerName() + "\"}]";
                 if(game.winningCombinations(player2.getInserted()))
-                    return "[{\"Status\":\"" + player2.getPlayerName() + "\"}]";
+                    return "[{\"Status\":\"winner\"},{\"player\":\"" + player2.getPlayerName() + "\"}]";
 
                 try
                 {
@@ -141,8 +138,6 @@ public class TicTacToe
                     return "[{\"Status\":\"draw\"}]";
                 }
 
-                System.out.println(counter);
-
                 return game.toJson();  
             }
         });
@@ -152,15 +147,6 @@ public class TicTacToe
             public Object handle(Request request, Response response) {
                 Table table = new Table();
                 return table.toJson();
-            }
-        });
-        
-        post(new Route("/add") {
-            @Override
-            public Object handle(Request request, Response response) {
-                Integer a = Integer.valueOf(request.queryParams("a"));
-                Integer b = Integer.valueOf(request.queryParams("b"));
-                return a + b;
             }
         });
     }
