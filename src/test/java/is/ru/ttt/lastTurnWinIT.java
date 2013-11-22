@@ -1,3 +1,4 @@
+package ru.is.ttt;
 package com.example.tests;
 
 import com.thoughtworks.selenium.Selenium;
