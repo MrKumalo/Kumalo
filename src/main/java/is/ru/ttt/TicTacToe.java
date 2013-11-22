@@ -87,11 +87,13 @@ public class TicTacToe
 
                     if(option == 'X')
                     {
+                        game.addCounter();
                         game.setTurn(2);
                         player1.insertIntoTable(cell);
                     }
                     else
                     {
+                        game.addCounter();
                          game.setTurn(1);
                          player2.insertIntoTable(cell);
                     }
@@ -128,11 +130,8 @@ public class TicTacToe
                 {
                     return "[{\"Status\":\"turn_error\"}]";
                 }
-
-                counter++;
-                if(counter == 9)
+                if(game.getTurnCounter() == 9)
                 {
-                    counter = 0;
                     return "[{\"Status\":\"draw\"}]";
                 }
 

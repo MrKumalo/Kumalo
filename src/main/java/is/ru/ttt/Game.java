@@ -39,6 +39,10 @@ public class Game {
 		table = null;
 		turn = -1;
 	}
+	public void setCounter(int counter)
+	{
+		turnCounter = 0;
+	}
 	public int getTurnCounter()
 	{
 		return turnCounter;
