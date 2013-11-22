@@ -10,19 +10,26 @@ deploy:
 env:
   global:
     secure: GWKT3z4/PWMP5UwYGfSn54YZx32D9HpTlDrXjxat+e98POkBTaF7I0THPm69zMFphCQp/0Ca6DIGYR5TOQM4ppUs7xWEBZB+q/UhfrWhi5V+cGd0h246yOAsz9QIgjwoLRlNKr/1kvW77LtCWYfaTyR+UG1O+AtdkZbPKReSRUw=
-after_success:
-          - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-          - git remote add heroku git@heroku.com:mrkumalo.git
-          - echo "Host heroku.com" >> ~/.ssh/config
-          - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-          - echo "   CheckHostIP no" >> ~/.ssh/config
-          - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-          - heroku keys:clear
-          - yes | heroku keys:add
-          - yes | git push heroku master
-after_success:
-          - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-          - heroku plugins:install https://github.com/ddollar/heroku-anvil
-          - heroku build -r <YOUR_HEROKU_APP_NAME>  -b
-            https://github.com/heroku/heroku-buildpack-ruby.git
 
+after_success:
+- wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+- git remote add heroku git@heroku.com:mrkumalo.git
+- echo "Host heroku.com" >> ~/.ssh/config
+- echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+- echo "   CheckHostIP no" >> ~/.ssh/config
+- echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+- heroku keys:clear
+- yes | heroku keys:add
+- yes | git push heroku master
+- wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+- heroku plugins:install https://github.com/ddollar/heroku-anvil
+- heroku build -r mrkumalo  -b https://github.com/heroku/heroku-buildpack-ruby.git
+
+install:
+- gem install selenium-webdriver
+
+script:
+before_deploy:
+- sh bin/before_deploy
+after_script:
+- sh -e /etc/init.d/xvfb stop
