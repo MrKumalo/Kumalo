@@ -2,17 +2,32 @@ language: java
 jdk: openjdk7
 env:
   global:
-  - secure: SqIiXAMJqyZRd68jmAuCWZ/MJliOJN3FfY1wejwLdIraYncC6FNJCKcqhMykNecftQxMvYruGMl036URMIQ3Cb1FDpKRt+8ne0QIR5JCEwNZd9s+255L/k3MOScOr4EPCWMM8lHw6AXzZ7G6+8cgyPRxEiODEOHg7DaPsvZMjts=
-  - secure: W/5TwUFq8vETHLOtn01NviiGluhLT8no9HXAzHz2vDbV5jdqCHd0HaZ2miJreuPxGnJnXx3i0NEzfx9sRsB8g9MxP9FxR7H3iulsZkf9g6mPWwnlzlTPl449NhtDvx60RjEOKHg2JykNjBeCYSJgxE/tlO0ZUftewH6l9cWOYFI=
+    secure: SqIiXAMJqyZRd68jmAuCWZ/MJliOJN3FfY1wejwLdIraYncC6FNJCKcqhMykNecftQxMvYruGMl036URMIQ3Cb1FDpKRt+8ne0QIR5JCEwNZd9s+255L/k3MOScOr4EPCWMM8lHw6AXzZ7G6+8cgyPRxEiODEOHg7DaPsvZMjts=
+    secure: A3c+xp2wRWejKiT+afCDsC2q/rVxT3LZ5gscR0itFQRAnqJvc0ccK1Cr4lRNdesXkRWbm8+/89TkivY7LAAbpTt/cAwgr72B8LUh9PxyfSjJ+/YZmMS6hDzvvK4LCbBHv+ibgazuuyQ0cbvBGG9At8i7HFiVInjTetKuZgKI4Ts=
 
 deploy:
   provider: heroku
-  api_key:
-     secure: SqIiXAMJqyZRd68jmAuCWZ/MJliOJN3FfY1wejwLdIraYncC6FNJCKcqhMykNecftQxMvYruGMl036URMIQ3Cb1FDpKRt+8ne0QIR5JCEwNZd9s+255L/k3MOScOr4EPCWMM8lHw6AXzZ7G6+8cgyPRxEiODEOHg7DaPsvZMjts=
+  api_key: d1a12cf8-b3df-49bf-be45-d5be3c33ff8b
+    secure: SqIiXAMJqyZRd68jmAuCWZ/MJliOJN3FfY1wejwLdIraYncC6FNJCKcqhMykNecftQxMvYruGMl036URMIQ3Cb1FDpKRt+8ne0QIR5JCEwNZd9s+255L/k3MOScOr4EPCWMM8lHw6AXzZ7G6+8cgyPRxEiODEOHg7DaPsvZMjts=
   app: 
-     master: mrkumalo
+    master: mrkumalo
   on:
     repo: MrKumalo/Kumalo
+
+0 notes on commit f56ff3a Show line notes below
+
+    Write
+    Preview
+
+Comments are parsed with GitHub Flavored Markdown
+
+Attach images by dragging & dropping or selecting them.
+Commit_comment_tip
+
+Tip: You can also add notes to lines in a file. Hover to the left of a line to make a note
+
+You are receiving notifications because you are watching this repository.
+
 
 before_install:
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
