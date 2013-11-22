@@ -9,8 +9,8 @@ deploy:
     repo: MrKumalo/Kumalo
 env:
   global:
-    secure: GWKT3z4/PWMP5UwYGfSn54YZx32D9HpTlDrXjxat+e98POkBTaF7I0THPm69zMFphCQp/0Ca6DIGYR5TOQM4ppUs7xWEBZB+q/UhfrWhi5V+cGd0h246yOAsz9QIgjwoLRlNKr/1kvW77LtCWYfaTyR+UG1O+AtdkZbPKReSRUw=
-
+  - secure: GWKT3z4/PWMP5UwYGfSn54YZx32D9HpTlDrXjxat+e98POkBTaF7I0THPm69zMFphCQp/0Ca6DIGYR5TOQM4ppUs7xWEBZB+q/UhfrWhi5V+cGd0h246yOAsz9QIgjwoLRlNKr/1kvW77LtCWYfaTyR+UG1O+AtdkZbPKReSRUw=
+  - secure: Ogs+BpsvaFqPod9uX/KZ9i6e3rKGtL61mkBD4fdzqygMKvO5E1SUUnLeJkyLUCiX9h7vS0cA9bd3YbjdqqTaRVX8br2cl26hrEQmKvYyztkbGe/WA6lAEK698xckERwPdLjeHvXFANSnebGLFTduZidEDyoppfz3VQBok8JoegI=
 after_success:
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - git remote add heroku git@heroku.com:kumalostaging.git
@@ -21,18 +21,16 @@ after_success:
 - heroku keys:clear
 - yes | heroku keys:add
 - yes | git push heroku master
-- "export DISPLAY=:99.0"
-- "sh -e /etc/init.d/xvfb start"
-- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
-  --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
+  --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - heroku plugins:install https://github.com/ddollar/heroku-anvil
 - heroku build -r kumalostaging  -b https://github.com/heroku/heroku-buildpack-ruby.git
-
 install:
 - gem install selenium-webdriver
-
-script:
+script: 
 before_deploy:
 - sh bin/before_deploy
 after_script:
