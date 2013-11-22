@@ -179,6 +179,29 @@ public class GameTest
 	}
 
 
+	@Test
+	public void setCounterGameTest()
+	{
+		Player player1 = new Player("p1", true);
+		Player player2 = new Player("p2", false);
+		Table t = new Table();
+		
+		Game game = null;
+		try
+		{
+			game = new Game(player1, player2, t, 1);
+			
+		}
+		catch(IllegalTurnException e)
+		{
+			assertEquals("Turn must be either 1 (Player 1) or 2 (Player 2)", e.getMessage());
+		}
+		
+		
+		game.setCounter(2);
+		assertEquals(2,game.getTurnCounter());
+	}
+
 
 	@Test
 	public void winningCombinationsGameTest()
