@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import java.util.regex.Pattern;
 import static org.apache.commons.lang3.StringUtils.join;
 
-public class DrawIT {
+public class lastTurnWinIT {
 	private Selenium selenium;
 
 	@Before
@@ -22,27 +22,29 @@ public class DrawIT {
 	}
 
 	@Test
-	public void testDrawIT() throws Exception {
+	public void testLastTurnWinIT() throws Exception {
 		selenium.open("/");
-		selenium.type("id=player1", "Axel");
-		selenium.type("id=player2", "Halli");
+		selenium.type("id=player1", "Halli");
+		selenium.type("id=player2", "Axel");
 		selenium.click("css=#lobby > button.btn.btn-default");
-		selenium.click("id=cell2");
-		selenium.click("id=cell8");
 		selenium.click("id=cell0");
-		selenium.click("id=cell1");
-		selenium.click("id=cell5");
+		selenium.click("id=cell8");
 		selenium.click("id=cell3");
+		selenium.click("id=cell1");
+		selenium.click("id=cell2");
 		selenium.click("id=cell4");
-		selenium.click("id=cell6");
 		selenium.click("id=cell7");
+		selenium.click("id=cell5");
+		selenium.click("id=cell6");
 		for (int second = 0;; second++) {
 			if (second >= 60) fail("timeout");
-			try { if ("Draw!".equals(selenium.getText("css=#playernames > p"))) break; } catch (Exception e) {}
+			try { if ("Halli has won!!".equals(selenium.getText("css=p.red"))) break; } catch (Exception e) {}
 			Thread.sleep(1000);
 		}
 
-		assertEquals("Draw!", selenium.getText("css=#playernames > p"));
+		assertEquals("Halli has won!!", selenium.getText("css=p.red"));
+		assertEquals("Tic Tac Toe", selenium.getTitle());
+		assertEquals("Tic Tac Toe", selenium.getText("css=h2"));
 	}
 
 	@After
