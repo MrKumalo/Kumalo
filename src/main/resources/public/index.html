@@ -33,23 +33,29 @@
           <td id="cell8"></td>
         </tr>
       </table>
-      <div id="playernames">
-        <div id="p1"></div><span id="p1turn"></span>
-        <div id="p2"></div><span id="p2turn"></span>
-     </div>
+
+      <table id="playernames">
+        <tr>
+          <td id="p1"></td>
+          <td id="p1turn"></td>
+        </tr>
+        <tr>
+          <td id="p2"></td>
+          <td id="p2turn"></td>
+        </tr>
+      </table>
 
       <div id="results"></div>
-
           <input type="hidden" id="turn" value="1">
           <button type="submit" id="playagain" onclick="newGame()" class="btn btn-default">Play again</button>
     </div>
 
     <div id="lobby">
         <div class="form-group">
-          <input type="text" class="form-control" name="player1" id="player1" value="Arnar" placeholder="Player 1">
+          <input type="text" class="form-control" name="player1" id="player1" value="" placeholder="Player 1">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="player2" id="player2" value="Sóli" placeholder="Player 2">
+          <input type="text" class="form-control" name="player2" id="player2" value="" placeholder="Player 2">
         </div>
         <button type="submit" onclick="javascript:return addPlayers()" class="btn btn-default">Play game</button>
     </div>
@@ -70,13 +76,9 @@
 
       if(!$(this).hasClass('used'))
       {
-
-        console.log("turn:" + $('#turn').val());
-
         var turn;
         if($('#turn').val() == '1') 
         {
-            console.log("foo");
             $('#p1turn').empty();
             $('#p2turn').html('<p>your turn!</p>');
             $('#turn').val('2');
@@ -84,7 +86,6 @@
         }
         else
         {
-            console.log("bar");
             $('#p1turn').html('<p>your turn!</p>');
             $('#p2turn').empty();
             turn = 'O';
@@ -105,13 +106,24 @@ function onclick(id, turn) {
       url: "/makemove",
       data: "cell=" + id + "&player=" + turn,
       success: function (data) {
-          
-            console.log(data);
-            
-            if(data.length == 1)
+            if(data.length == 1 || data.length == 2)
             {
-              $('#playernames').empty();
-              $('#playernames').html("<p>" + data[0]['Status'] + " has won!!</p>");
+
+              if(data[0]['Status'] == 'winner')
+              {
+                $('#playernames').empty();
+                $('#playernames').html("<p class='red'>" + data[1]['player'] + " has won!!</p>");
+              }
+              else if(data[0]['Status'] == 'draw')
+              {
+                $('#playernames').empty();
+                $('#playernames').html("<p class='red'>Draw!</p>");
+              }
+              else
+              {
+                console.log("eitthvað er í fokki");
+              }
+
               $('#playagain').show();
 
               for(var i=0; i <9; i++)
