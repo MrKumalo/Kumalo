@@ -33,14 +33,14 @@ public class Win2IT {
 			Thread.sleep(1000);
 		}
 
-		verifyEquals("X: Axel", selenium.getText("css=p"));
+		assertEquals("X: Axel", selenium.getText("css=p"));
 		for (int second = 0;; second++) {
 			if (second >= 60) fail("timeout");
 			try { if ("O: Halli".equals(selenium.getText("css=#p2 > p"))) break; } catch (Exception e) {}
 			Thread.sleep(1000);
 		}
 
-		verifyEquals("O: Halli", selenium.getText("css=#p2 > p"));
+		assertEquals("O: Halli", selenium.getText("css=#p2 > p"));
 		selenium.click("id=cell2");
 		selenium.click("id=cell0");
 		selenium.click("id=cell1");
