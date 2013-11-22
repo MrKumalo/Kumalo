@@ -13,7 +13,7 @@ env:
 
 after_success:
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-- git remote add heroku git@heroku.com:mrkumalo.git
+- git remote add heroku git@heroku.com:kumalostaging.git
 - echo "Host heroku.com" >> ~/.ssh/config
 - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
 - echo "   CheckHostIP no" >> ~/.ssh/config
@@ -23,7 +23,7 @@ after_success:
 - yes | git push heroku master
 - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - heroku plugins:install https://github.com/ddollar/heroku-anvil
-- heroku build -r mrkumalo  -b https://github.com/heroku/heroku-buildpack-ruby.git
+- heroku build -r kumalostaging  -b https://github.com/heroku/heroku-buildpack-ruby.git
 
 install:
 - gem install selenium-webdriver
