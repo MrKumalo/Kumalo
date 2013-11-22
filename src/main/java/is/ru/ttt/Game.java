@@ -20,6 +20,16 @@ public class Game {
 	private int turn;
 	private int turnCounter;
 
+	/**
+	 *	
+	 *
+	 * @param	p1 						Intance of player.
+ 	 * @param	p2 						Intance of player.
+	 * @param	table 					Intance of table.
+	 * @param	turn 					Indicates which player can play.
+	 * @throws	IllegalTurnException	This exception is thrown if turn is not 1 or 2.
+	 */
+
 	public Game(Player p1, Player p2, Table table, int turn) throws IllegalTurnException
 	{
 		turnCounter = 0;
