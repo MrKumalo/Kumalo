@@ -87,34 +87,10 @@
             turn = 'O';
             $('#turn').val('1');
         }
-
-<<<<<<< HEAD
         onclick(id, turn);
-
         $(this).addClass('used') 
-=======
-        $.ajax({
-            type: "POST",
-            url: "/makemove",
-            data: 'cell=' + id + '&player=' + turn,
-            success: function (data) {
-              
-              console.log(data);
-
-              if(turn == 'X')
-              {
-                 $('#p2turn').html('<p>your turn!</p>');
-                  $('#p1turn').empty();
-              }
-              else
-              {
-                 $('#p1turn').empty();
-                  $('#p2turn').html('<p>your turn!</p>');
-              }
->>>>>>> fc0c05c89e80ea275f476761ea575c59041a8af6
-
       }
-    });
+});
 
 
 function onclick(id, turn) {
@@ -136,15 +112,11 @@ function onclick(id, turn) {
                   $('#cell' + i).addClass('used') 
               }
 
-<<<<<<< HEAD
             }
 
             $('#cell' + id).html("<p>" + turn + "</p>");
         },
         dataType: "json"
-=======
-      }
->>>>>>> fc0c05c89e80ea275f476761ea575c59041a8af6
     });
     return false;
 }
