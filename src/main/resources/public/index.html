@@ -15,7 +15,7 @@
   <body>
 
     <div class="container">
-      <h2>Yoloswag</h2>
+      <h2>Tic Tac Toe</h2>
       <table id="board" class="table">
         <tr>
           <td id="cell0"></td>
@@ -41,7 +41,7 @@
       <div id="results"></div>
 
           <input type="hidden" id="turn" value="1">
-          <button type="submit" id="playagain" onclick="javascript:return newGame()" class="btn btn-default">Play again</button>
+          <button type="submit" id="playagain" onclick="javascript:return addPlayers()" class="btn btn-default">Play again</button>
     </div>
 
     <div id="lobby">
@@ -96,12 +96,6 @@
 });
 
 
-function newGame(){
-  location.reload();
-}
-
-
-
 function onclick(id, turn) {
     $.ajax({
       type: "POST",
@@ -139,7 +133,7 @@ function addPlayers() {
 
     $.ajax({
         type: "POST",
-        url: "/players/ + ",
+        url: "/players",
         data: 'player1=' + player1 + '&player2=' + player2,
         success: function (data) {
           
