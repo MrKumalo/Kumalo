@@ -34,14 +34,11 @@
         </tr>
       </table>
       <div id="playernames">
-        <div id="p1"></div><span id="p1turn"></span>
-        <div id="p2"></div><span id="p2turn"></span>
+        <div id="p1"><span id="p1turn"></span></div>
+        <div id="p2"><span id="p2turn"></span></div>
      </div>
 
       <div id="results"></div>
-
-          <input type="hidden" id="turn" value="1">
-          <button type="submit" id="playagain" onclick="newGame()" class="btn btn-default">Play again</button>
     </div>
 
     <div id="lobby">
@@ -66,76 +63,62 @@
   });
   
     $('#board td').click(function(event) {
-      var id = $(this).attr('id').substring(4,5);
-
+      var id = $(this).attr('id');
       if(!$(this).hasClass('used'))
       {
-
-        console.log("turn:" + $('#turn').val());
-
         var turn;
-        if($('#turn').val() == '1') 
+        if($('#p2turn').val() == '') 
         {
-            console.log("foo");
-            $('#p1turn').empty();
-            $('#p2turn').html('<p>your turn!</p>');
-            $('#turn').val('2');
             turn = 'X';
         }
         else
         {
-            console.log("bar");
-            $('#p1turn').html('<p>your turn!</p>');
-            $('#p2turn').empty();
             turn = 'O';
-            $('#turn').val('1');
         }
-        onclick(id, turn);
-        $(this).addClass('used') 
-      }
-});
 
-function newGame() {
- location.reload();
-}
 
-function onclick(id, turn) {
-    $.ajax({
-      type: "POST",
-      url: "/makemove",
-      data: "cell=" + id + "&player=" + turn,
-      success: function (data) {
-          
-            console.log(data);
-            
-            if(data.length == 1)
-            {
-              $('#playernames').empty();
-              $('#playernames').html("<p>" + data[0]['Status'] + " has won!!</p>");
-              $('#playagain').show();
+        $.ajax({
+            type: "POST",
+            url: "/makemove",
+            data: 'cell=' + id + '&player=' + turn,
+            success: function (data) {
+              
+              console.log(data);
 
-              for(var i=0; i <9; i++)
+              if(turn == 'X')
               {
-                  $('#cell' + i).addClass('used') 
+                 $('#p2turn').html('<p>your turn!</p>');
+                  $('#p1turn').empty();
+              }
+              else
+              {
+                 $('#p1turn').empty();
+                  $('#p2turn').html('<p>your turn!</p>');
               }
 
-            }
 
-            $('#cell' + id).html("<p>" + turn + "</p>");
-        },
-        dataType: "json"
+              $(this).addClass('used');
+              $(this).append('<p>' + turn + '</p>');
+
+              
+            },
+            dataType: "json"
+        });
+
+
+
+
+
+
+      }
     });
-    return false;
-}
 
-function newGame() {
-  location.reload();
-}
 
 function addPlayers() {
     var player1 = $("#player1").val();
     var player2 = $("#player2").val();
 
+    console.log(player1 + ":" + player2);
     $.ajax({
         type: "POST",
         url: "/players",
@@ -146,11 +129,12 @@ function addPlayers() {
           $('#p2').html('<p>O: ' + data[10]['Player2'] + '</p>');
 
 
-          $('#p1turn').html('<p>your turn!</p>');
+          $('#p2turn').html('<p>your turn!</p>');
 
           $('#lobby').hide();
-          $('#playagain').hide();
           $('.container').show();
+          
+          console.log(data);
         },
         dataType: "json"
     });

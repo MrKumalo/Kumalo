@@ -4,3 +4,7 @@ javac *.java
 sudo java TTT
 
 No idea why we need sudo, but it works!
+
+
+[![Build Status](https://travis-ci.org/MrKumalo/Kumalo.png)]
+(https://travis-ci.org/MrKumalo/Kumalo)

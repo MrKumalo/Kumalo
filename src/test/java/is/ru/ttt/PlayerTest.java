@@ -1,3 +1,9 @@
+/*
+* @(#)PlayerTest.java 1, 18 Nov 2013
+ *
+ * Copyright (c) arnars12, axelg12, gadidjah12, gunnarsa12, haraldurs12, solberg12 
+ */
+
 package is.ru.ttt;
 
 import static org.junit.Assert.*;
@@ -17,30 +23,37 @@ import org.junit.Test;
 public class PlayerTest{
 
 	@Test
-	public void playerName()
+	public void playerNameTest()
 	{
 		Player player1 = new Player("Halli", true);
-		 assertEquals("Halli", player1.getPlayer());
+		 assertEquals("Halli", player1.getPlayerName());
 	}
 
 	@Test
-	public void isMyTurn()
+	public void isMyTurnTest()
 	{
 		Player player2 = new Player("Bull", true);
 		assertEquals(true, player2.getTurn());
 	}
 
 	@Test
-	public void TurnTwoPlayer()
+	public void turnTwoPlayerTest()
 	{
 		Player player1 = new Player("p1", true);
 		Player player2 = new Player("p2", false);
 		assertTrue(player1.getTurn());
 		assertFalse(player2.getTurn());
 	}
-
 	@Test
-	public void TurnTest()
+	public void defaultConsTest()
+	{
+		Player p1 = new Player();
+		assertEquals(null, p1.getPlayerName());
+		assertEquals(null, p1.getTurn());
+		assertEquals(0, p1.getInserted().size());
+	}
+	@Test
+	public void turnTest()
 	{
 		Player player1 = new Player("p1", true);
 		Player player2 = new Player("p2", false);
@@ -69,12 +82,7 @@ public class PlayerTest{
 			p1.insertIntoTable(3);
 			assertArrayEquals(test.toArray(), p1.getInserted().toArray());
 
-			ArrayList<Integer> test2 = new ArrayList<Integer>();
-			test2.add(1);
-			p2.insertIntoTable(1);
-			assertEquals(test2.toArray(), p2.getInserted().toArray());
-			p2.insertIntoTable(1);
-			assertEquals(test2.toArray(), p2.getInserted().toArray());
+
 		}
 		catch(OutOfBoundsException e)
 		{
@@ -88,7 +96,7 @@ public class PlayerTest{
 	}
 
 	@Test
-	public void testExpectedException3() 
+	public void outOfBoundsExceptionTest() 
 	{
 	  	try 
 	  	{
@@ -105,7 +113,7 @@ public class PlayerTest{
 	  	}
 	}
 	@Test
-	public void AlreadyOccupiedExceptionTest() 
+	public void alreadyOccupiedExceptionTest() 
 	{
 	  	try 
 	  	{
@@ -123,5 +131,12 @@ public class PlayerTest{
 	  	}
 	}
 	
+	@Test
+	public void toJsonTest()
+	{
+		Player p1 = new Player("Mario", true);
+		String jsonTest = ":\"Mario\"}";
+		assertEquals(p1.toJson(), jsonTest);
+	}
 
 }
