@@ -8,7 +8,7 @@ package is.ru.ttt;
 import java.util.ArrayList;
 
 /**
- * [lýsing]
+ * The Game class maintains the game, players and table.
  *
  * @author arnars12, axelg12, gadidjah12, gunnarsa12, haraldurs12, solberg12  
  * @version 1, 20 November 2013
