@@ -1,6 +1,0 @@
-Verkefnalisti:
-
-- Bæta code coverage
-- Klára leik
-	-Þegar leikur er búinn, selenium test
--Byrja á pdf skjölum(Sjá verkefnalýsingu)
