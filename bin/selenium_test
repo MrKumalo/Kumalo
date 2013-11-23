@@ -1,5 +1,5 @@
 #!\bin\bash
 
-export STAGING_SERVER=${STAGING_SERVER:='http://kumalo-ttt.herokuapp.com'}
+export STAGING_SERVER=${STAGING_SERVER:='http://kumalostaging.herokuapp.com'}
 
 mvn test-compile failsafe:integration-test failsafe:verify
