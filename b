@@ -1,5 +1,6 @@
 #!/bin/bash
 
+./bin/clean
 git add .
 
 git commit -m "Arnar: $1"
