@@ -59,7 +59,7 @@ public class Game {
 	 */
 	public void setCounter(int counter)
 	{
-		turnCounter = 0;
+		this.turnCounter = counter;
 	} 
 
 	/**
@@ -68,7 +68,7 @@ public class Game {
 	 */
 	public int getTurnCounter()
 	{
-		return turnCounter;
+		return this.turnCounter;
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class Game {
 	 */
 	public void addCounter()
 	{
-		turnCounter++;
+		this.turnCounter++;
 	}
 
 	/**
