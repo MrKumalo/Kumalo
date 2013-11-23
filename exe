@@ -1,8 +1,8 @@
 #!/bin/bash
 
 chmod +x bin/*
-chmod +x a
-chmod +x b
+chmod +x fresh
+chmod +x push
 chmod +x exe
 chmod +x soli
 
