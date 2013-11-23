@@ -95,9 +95,8 @@
         $(this).addClass('used') 
       }
 });
-
 function newGame() {
-window.location = "localhost:5000";
+ location.reload(true);
 }
 
 function onclick(id, turn) {
@@ -138,11 +137,6 @@ function onclick(id, turn) {
         dataType: "json"
     });
     return false;
-}
-
-function newGame() {
-  location.reload();
-  //window.location.reload(true);
 }
 
 function addPlayers() {
